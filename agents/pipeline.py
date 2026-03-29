@@ -9,6 +9,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 from agents.exif_stripper import strip_exif_to_file, verify_no_exif
+from agents.geometry_analyzer import analyze_geometry
 from agents.landmark_validator import save_artifact, validate_landmarks
 
 load_dotenv()
@@ -47,9 +48,16 @@ def run(input_image: str | Path, output_dir: str | Path) -> dict:
     else:
         print(f"      No quality flags.")
 
-    # Stage 3: Save artifact
+    # Stage 3: Geometry analysis
+    print(f"[3/4] Computing facial geometry (offline)...")
+    artifact["geometry"] = analyze_geometry(artifact)
+    fi = artifact["geometry"]["measurements"]["facial_index"]
+    sym = artifact["geometry"]["measurements"]["symmetry_index"]
+    print(f"      facial_index={fi}  symmetry={sym}")
+
+    # Stage 4: Save artifact
     artifact_path = output_dir / f"{artifact['artifact_id']}.json"
-    print(f"[3/3] Saving artifact: {artifact_path.name}")
+    print(f"[4/4] Saving artifact: {artifact_path.name}")
     save_artifact(artifact, artifact_path)
 
     print(f"\nDone. Artifact ID: {artifact['artifact_id']}")
