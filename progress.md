@@ -20,7 +20,7 @@
 
 ## In Progress
 
-- [ ] End-to-end pipeline test with a real image
+- [ ] Manual QA review — set `approved: true` on passing artifacts
 - [ ] Unit tests for EXIF stripper and landmark validator
 
 ---
@@ -47,10 +47,27 @@
 
 ---
 
+## Completed (continued)
+
+### 2026-03-29 — Catalog Infrastructure + First Session
+
+- [x] Content-addressed catalog structure: `catalog/sessions/<session_id>/`
+- [x] `scripts/ingest_session.py` — processes a folder through full pipeline, writes manifest + artifacts
+- [x] `scripts/rebuild_index.py` — regenerates `catalog/index.json` + `data/catalog.db` from catalog JSON
+- [x] `scripts/setup_models.sh` — downloads MediaPipe FaceLandmarker model
+- [x] HEIC/HEIF support added via `pillow-heif`
+- [x] First session ingested: `2026-03-29_shannon_001`
+  - 16 images processed, 8 artifacts generated (8 no-face-detected)
+  - Subject anonymized as `subj_461f0955`
+  - All artifacts at confidence=1.0, no quality flags
+
+---
+
 ## Upcoming
 
-- [ ] `scripts/test_pipeline.py` — integration test with fixture image
-- [ ] `anatomy/` — sample fixture artifact for schema validation testing
+- [ ] Manual QA: approve passing artifacts in catalog
+- [ ] Investigate 8 no-face-detected failures (non-frontal or non-portrait images)
+- [ ] Unit tests for EXIF stripper and landmark validator
 - [ ] CI: JSON schema validation on artifact output
 
 ---

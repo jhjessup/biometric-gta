@@ -1,6 +1,6 @@
 """
 MediaPipe Landmark Validator
-Runs local (offline) face mesh detection and validates landmark quality.
+Runs local (offline) face landmark detection using MediaPipe Tasks API.
 All inference is CPU-only — no network calls.
 """
 
@@ -9,8 +9,9 @@ import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 
-import mediapipe as mp
 import numpy as np
+from mediapipe.tasks import python as mp_tasks
+from mediapipe.tasks.python import vision as mp_vision
 from PIL import Image
 
 PIPELINE_VERSION = "1.0.0"
@@ -18,12 +19,32 @@ SCHEMA_VERSION = "1.0.0"
 MIN_CONFIDENCE = 0.85
 MIN_AVG_VISIBILITY = 0.90
 
-mp_face_mesh = mp.solutions.face_mesh
+MODELS_DIR = Path(__file__).parent.parent / "models"
+MODEL_PATH = MODELS_DIR / "face_landmarker.task"
+
+
+def _get_detector():
+    if not MODEL_PATH.exists():
+        raise FileNotFoundError(
+            f"FaceLandmarker model not found at {MODEL_PATH}. "
+            "Run: bash scripts/setup_models.sh"
+        )
+    base_options = mp_tasks.BaseOptions(
+        model_asset_path=str(MODEL_PATH),
+        delegate=mp_tasks.BaseOptions.Delegate.CPU,
+    )
+    options = mp_vision.FaceLandmarkerOptions(
+        base_options=base_options,
+        output_face_blendshapes=False,
+        output_facial_transformation_matrixes=False,
+        num_faces=1,
+    )
+    return mp_vision.FaceLandmarker.create_from_options(options)
 
 
 def validate_landmarks(image_path: str | Path, image_hash: str) -> dict:
     """
-    Run MediaPipe FaceMesh on a pre-processed (EXIF-stripped) image.
+    Run MediaPipe FaceLandmarker on a pre-processed (EXIF-stripped) image.
 
     Args:
         image_path: Path to the clean image
@@ -32,33 +53,33 @@ def validate_landmarks(image_path: str | Path, image_hash: str) -> dict:
     Returns:
         GTA artifact dict conforming to anatomy/landmark_schema.json
     """
+    import mediapipe as mp
+
     image_path = Path(image_path)
     with Image.open(image_path) as img:
         width, height = img.size
-        rgb = np.array(img.convert("RGB"))
+        rgb = img.convert("RGB")
 
-    quality_flags = []
+    mp_image = mp.Image(
+        image_format=mp.ImageFormat.SRGB,
+        data=np.array(rgb),
+    )
 
-    with mp_face_mesh.FaceMesh(
-        static_image_mode=True,
-        max_num_faces=1,
-        refine_landmarks=True,
-        min_detection_confidence=0.5,
-    ) as face_mesh:
-        results = face_mesh.process(rgb)
+    detector = _get_detector()
+    results = detector.detect(mp_image)
 
-    if not results.multi_face_landmarks:
+    if not results.face_landmarks:
         raise ValueError("No face detected in image.")
 
-    face = results.multi_face_landmarks[0]
-    raw_confidence = getattr(results, "multi_face_detection", None)
+    face = results.face_landmarks[0]
+    quality_flags = []
 
     landmarks = []
     visibilities = []
     x_coords, y_coords = [], []
 
-    for i, lm in enumerate(face.landmark):
-        vis = getattr(lm, "visibility", 1.0)
+    for i, lm in enumerate(face):
+        vis = getattr(lm, "visibility", 1.0) or 1.0
         landmarks.append({
             "index": i,
             "x": round(lm.x, 6),
@@ -95,7 +116,7 @@ def validate_landmarks(image_path: str | Path, image_hash: str) -> dict:
         "landmarks": {
             "face_mesh": landmarks,
             "confidence": round(confidence, 6),
-            "validator": "face_mesh_v1",
+            "validator": "face_landmarker_v2",
             "bounding_box": bounding_box,
         },
         "metadata": {

@@ -1,0 +1,111 @@
+{
+  "generated_at": "2026-03-29T22:18:46.991426+00:00",
+  "session_count": 1,
+  "artifact_count": 8,
+  "artifacts": [
+    {
+      "artifact_id": "0441e23a-a9bd-4839-b6a9-922b6c64c04f",
+      "session_id": "2026-03-29_shannon_001",
+      "subject_id": "subj_461f0955",
+      "capture_date": "2026-03-29",
+      "image_hash": "3424962b8f2e5811172b54a1f3a33acde94b94a32c4c246e1b34bd90c60fbcce",
+      "confidence": 1.0,
+      "landmark_count": 478,
+      "quality_flags": [],
+      "approved": false,
+      "source_filename": "IMG_0960.HEIC",
+      "created_at": "2026-03-29T22:16:35.350650+00:00"
+    },
+    {
+      "artifact_id": "ef103149-c3fd-43a3-ae41-2e0a55c1f492",
+      "session_id": "2026-03-29_shannon_001",
+      "subject_id": "subj_461f0955",
+      "capture_date": "2026-03-29",
+      "image_hash": "6aa202d1a9b4b721f65858d6f455ac9d4c9a5160de13991260bf2cf46623f24b",
+      "confidence": 1.0,
+      "landmark_count": 478,
+      "quality_flags": [],
+      "approved": false,
+      "source_filename": "IMG_2809.JPG",
+      "created_at": "2026-03-29T22:16:48.595607+00:00"
+    },
+    {
+      "artifact_id": "df4a36da-421a-41a1-9221-a39a7e1b4db1",
+      "session_id": "2026-03-29_shannon_001",
+      "subject_id": "subj_461f0955",
+      "capture_date": "2026-03-29",
+      "image_hash": "1c44180b090fb9295bddef8421326142c92d0319f8e079f8f9b050321767a6f1",
+      "confidence": 1.0,
+      "landmark_count": 478,
+      "quality_flags": [],
+      "approved": false,
+      "source_filename": "IMG_3929.HEIC",
+      "created_at": "2026-03-29T22:17:05.545441+00:00"
+    },
+    {
+      "artifact_id": "dcffbd31-db7d-41bf-b8e1-57cb7a323eea",
+      "session_id": "2026-03-29_shannon_001",
+      "subject_id": "subj_461f0955",
+      "capture_date": "2026-03-29",
+      "image_hash": "c42761066fd5bc3a53f923ba76fbaa146071c5ad50f80e01fe43b2723d200b26",
+      "confidence": 1.0,
+      "landmark_count": 478,
+      "quality_flags": [],
+      "approved": false,
+      "source_filename": "IMG_4216.HEIC",
+      "created_at": "2026-03-29T22:17:14.838521+00:00"
+    },
+    {
+      "artifact_id": "f7394775-cb61-4a48-ac3d-ef2ad3d46003",
+      "session_id": "2026-03-29_shannon_001",
+      "subject_id": "subj_461f0955",
+      "capture_date": "2026-03-29",
+      "image_hash": "0744afe93d83526d75f190ac9bfbbc282589f3a55ae73dfc12c6cd2594f57347",
+      "confidence": 1.0,
+      "landmark_count": 478,
+      "quality_flags": [],
+      "approved": false,
+      "source_filename": "IMG_4720.HEIC",
+      "created_at": "2026-03-29T22:17:41.201809+00:00"
+    },
+    {
+      "artifact_id": "539144fb-7a3e-4392-b810-6de869005408",
+      "session_id": "2026-03-29_shannon_001",
+      "subject_id": "subj_461f0955",
+      "capture_date": "2026-03-29",
+      "image_hash": "411610ad8c5519fdc90cf5faa1d67b45a2ec95a9317ec94b3f5ceb889f5595c2",
+      "confidence": 1.0,
+      "landmark_count": 478,
+      "quality_flags": [],
+      "approved": false,
+      "source_filename": "IMG_5140.HEIC",
+      "created_at": "2026-03-29T22:17:58.713868+00:00"
+    },
+    {
+      "artifact_id": "68d8ca9b-6ee7-41e2-ba5b-a0c66958d183",
+      "session_id": "2026-03-29_shannon_001",
+      "subject_id": "subj_461f0955",
+      "capture_date": "2026-03-29",
+      "image_hash": "06491be486cdecec4dfd52a3fb91c29e832f773c0106642d3aadfaa0e0daabdd",
+      "confidence": 1.0,
+      "landmark_count": 478,
+      "quality_flags": [],
+      "approved": false,
+      "source_filename": "IMG_5478.HEIC",
+      "created_at": "2026-03-29T22:18:32.549128+00:00"
+    },
+    {
+      "artifact_id": "2973fada-8f43-4d9e-905e-72eb0be5f2e1",
+      "session_id": "2026-03-29_shannon_001",
+      "subject_id": "subj_461f0955",
+      "capture_date": "2026-03-29",
+      "image_hash": "49da4fe71102b99f212253956b6fc06d19748d73892571d1ceddaa982d064bfe",
+      "confidence": 1.0,
+      "landmark_count": 478,
+      "quality_flags": [],
+      "approved": false,
+      "source_filename": "IMG_9783.HEIC",
+      "created_at": "2026-03-29T22:18:37.518465+00:00"
+    }
+  ]
+}

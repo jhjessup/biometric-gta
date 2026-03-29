@@ -1,0 +1,72 @@
+{
+  "session_id": "2026-03-29_shannon_001",
+  "subject_id": "subj_461f0955",
+  "capture_date": "2026-03-29",
+  "source_dir": "/root/claude/source_images_shannon",
+  "source_image_count": 16,
+  "source_image_hashes": [
+    "sha256:3424962b8f2e5811172b54a1f3a33acde94b94a32c4c246e1b34bd90c60fbcce",
+    "sha256:a2f8cea95c610fe0e5420f6e49da09252ef15dc676dfcd49fdcb9d33615079d6",
+    "sha256:6aa202d1a9b4b721f65858d6f455ac9d4c9a5160de13991260bf2cf46623f24b",
+    "sha256:53e9e1ebcdaab77e447713f050c1aeb2e8e0616df3a5096c903b63abd25f12d9",
+    "sha256:1c44180b090fb9295bddef8421326142c92d0319f8e079f8f9b050321767a6f1",
+    "sha256:c42761066fd5bc3a53f923ba76fbaa146071c5ad50f80e01fe43b2723d200b26",
+    "sha256:5f51ca2628aea82981dc0d4ae29621c357247742b137658cb84b0aa6255657f9",
+    "sha256:ccb8d637b1fc09eae892d30d2f2f2f459c64f54101be1bbf6f1096b8ace3e2ca",
+    "sha256:0744afe93d83526d75f190ac9bfbbc282589f3a55ae73dfc12c6cd2594f57347",
+    "sha256:59a4947441a4cf762662f483f0f026fc6c7e0ffda30de3adbe00854ebc1d9c18",
+    "sha256:411610ad8c5519fdc90cf5faa1d67b45a2ec95a9317ec94b3f5ceb889f5595c2",
+    "sha256:a08b9fce3c67c5b7ef4351d47804130d284a81c9aaa4ebcfc2064f50c09621e5",
+    "sha256:90681ad12dbcdcf4d2f791b8c24fc0c38e726030aec7ec76a52271b415c2dee8",
+    "sha256:1809651f7b5cf7f6688ec8103015e57ef9f9ee039ca3b24ec933bcda1a695033",
+    "sha256:06491be486cdecec4dfd52a3fb91c29e832f773c0106642d3aadfaa0e0daabdd",
+    "sha256:49da4fe71102b99f212253956b6fc06d19748d73892571d1ceddaa982d064bfe"
+  ],
+  "artifacts": [
+    "0441e23a-a9bd-4839-b6a9-922b6c64c04f",
+    "ef103149-c3fd-43a3-ae41-2e0a55c1f492",
+    "df4a36da-421a-41a1-9221-a39a7e1b4db1",
+    "dcffbd31-db7d-41bf-b8e1-57cb7a323eea",
+    "f7394775-cb61-4a48-ac3d-ef2ad3d46003",
+    "539144fb-7a3e-4392-b810-6de869005408",
+    "68d8ca9b-6ee7-41e2-ba5b-a0c66958d183",
+    "2973fada-8f43-4d9e-905e-72eb0be5f2e1"
+  ],
+  "failed": [
+    {
+      "file": "IMG_2795.JPG",
+      "error": "No face detected in image."
+    },
+    {
+      "file": "IMG_3800.HEIC",
+      "error": "No face detected in image."
+    },
+    {
+      "file": "IMG_4222.HEIC",
+      "error": "No face detected in image."
+    },
+    {
+      "file": "IMG_4664.HEIC",
+      "error": "No face detected in image."
+    },
+    {
+      "file": "IMG_5130.HEIC",
+      "error": "No face detected in image."
+    },
+    {
+      "file": "IMG_5203.HEIC",
+      "error": "No face detected in image."
+    },
+    {
+      "file": "IMG_5357.HEIC",
+      "error": "No face detected in image."
+    },
+    {
+      "file": "IMG_5476.HEIC",
+      "error": "No face detected in image."
+    }
+  ],
+  "pipeline_version": "1.0.0",
+  "created_at": "2026-03-29T22:18:37.534447+00:00",
+  "notes": ""
+}

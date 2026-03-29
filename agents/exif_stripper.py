@@ -1,13 +1,17 @@
 """
 EXIF Stripping Pre-Processor
 Strips all EXIF/metadata from images and returns a clean copy + SHA-256 hash.
+Supports JPEG, PNG, and HEIC/HEIF formats.
 """
 
 import hashlib
 import io
 from pathlib import Path
 
+import pillow_heif
 from PIL import Image
+
+pillow_heif.register_heif_opener()
 
 
 def strip_exif(input_path: str | Path) -> tuple[bytes, str]:

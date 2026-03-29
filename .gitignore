@@ -19,12 +19,21 @@ build/
 .DS_Store
 Thumbs.db
 
-# Data (raw biometric artifacts — never commit)
-data/raw/
+# Models (large binaries — download via scripts/setup_models.sh)
+models/*.task
+models/*.tflite
+
+# Data — raw images and local DB (never commit)
+data/
+catalog/sessions/*/stripped/
+
+# Raw image formats
 *.jpg
 *.jpeg
 *.png
 *.bmp
 *.tiff
+*.heic
+*.heif
 !style/**/*.png
 !style/**/*.jpg
