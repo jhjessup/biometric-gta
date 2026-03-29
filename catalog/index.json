@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-29T22:27:10.425354+00:00",
+  "generated_at": "2026-03-29T22:31:02.718288+00:00",
   "session_count": 1,
   "artifact_count": 14,
   "artifacts": [
@@ -24,7 +24,9 @@
       "image_hash": "6aa202d1a9b4b721f65858d6f455ac9d4c9a5160de13991260bf2cf46623f24b",
       "confidence": 1.0,
       "landmark_count": 478,
-      "quality_flags": [],
+      "quality_flags": [
+        "subject_mismatch_suspected"
+      ],
       "approved": false,
       "source_filename": "IMG_2809.JPG",
       "created_at": "2026-03-29T22:16:48.595607+00:00"

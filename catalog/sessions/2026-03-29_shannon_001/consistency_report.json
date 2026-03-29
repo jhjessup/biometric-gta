@@ -1,0 +1,28 @@
+{
+  "session_id": "2026-03-29_shannon_001",
+  "analysis": "landmark_geometry_consistency",
+  "total_artifacts": 14,
+  "cluster_size": 13,
+  "outlier": "IMG_2809.JPG",
+  "outlier_artifact_id": "ef103149-c3fd-43a3-ae41-2e0a55c1f492",
+  "cluster_pairwise_mean": 0.672,
+  "cluster_pairwise_std": 0.2533,
+  "cluster_pairwise_max": 1.2699,
+  "outlier_min_dist_to_cluster": 1.7361,
+  "verdict": "CONSISTENT \u2014 13 images form a tight geometric cluster consistent with a single subject. 1 outlier flagged.",
+  "cluster_members": [
+    "IMG_0960.HEIC",
+    "IMG_4222.HEIC",
+    "IMG_9783.HEIC",
+    "IMG_5130.HEIC",
+    "IMG_5140.HEIC",
+    "IMG_5478.HEIC",
+    "IMG_3800.HEIC",
+    "IMG_5476.HEIC",
+    "IMG_2795.JPG",
+    "IMG_4216.HEIC",
+    "IMG_3929.HEIC",
+    "IMG_5203.HEIC",
+    "IMG_4720.HEIC"
+  ]
+}
