@@ -1,0 +1,125 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BiometricLandmarkArtifact",
+  "description": "Ground truth artifact schema for facial biometric landmark annotations",
+  "type": "object",
+  "required": ["artifact_id", "source", "landmarks", "metadata"],
+  "properties": {
+    "artifact_id": {
+      "type": "string",
+      "description": "Unique identifier for this GTA (UUID v4)",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "schema_version": {
+      "type": "string",
+      "description": "Schema version for forward compatibility",
+      "default": "1.0.0"
+    },
+    "source": {
+      "type": "object",
+      "description": "Image source metadata (no raw image data stored here)",
+      "required": ["image_hash", "capture_timestamp", "resolution"],
+      "properties": {
+        "image_hash": {
+          "type": "string",
+          "description": "SHA-256 hash of the EXIF-stripped source image"
+        },
+        "capture_timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 UTC timestamp of image capture"
+        },
+        "resolution": {
+          "type": "object",
+          "required": ["width", "height"],
+          "properties": {
+            "width": { "type": "integer", "minimum": 1 },
+            "height": { "type": "integer", "minimum": 1 }
+          }
+        },
+        "sensor_id": {
+          "type": "string",
+          "description": "Anonymized sensor/device identifier"
+        }
+      }
+    },
+    "landmarks": {
+      "type": "object",
+      "description": "Validated landmark coordinates from MediaPipe FaceMesh (478 points)",
+      "required": ["face_mesh", "confidence", "validator"],
+      "properties": {
+        "face_mesh": {
+          "type": "array",
+          "description": "Normalized landmark coordinates [x, y, z] in image space (0.0–1.0)",
+          "minItems": 1,
+          "maxItems": 478,
+          "items": {
+            "type": "object",
+            "required": ["index", "x", "y", "z"],
+            "properties": {
+              "index": { "type": "integer", "minimum": 0, "maximum": 477 },
+              "x": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+              "y": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+              "z": { "type": "number", "description": "Depth relative to face center" },
+              "visibility": { "type": "number", "minimum": 0.0, "maximum": 1.0 }
+            }
+          }
+        },
+        "confidence": {
+          "type": "number",
+          "description": "Overall detection confidence score from MediaPipe",
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "validator": {
+          "type": "string",
+          "description": "MediaPipe model used for validation",
+          "enum": ["face_mesh_v1", "face_landmarker_v2"]
+        },
+        "bounding_box": {
+          "type": "object",
+          "description": "Face bounding box in normalized coordinates",
+          "properties": {
+            "x_min": { "type": "number", "minimum": 0.0 },
+            "y_min": { "type": "number", "minimum": 0.0 },
+            "x_max": { "type": "number", "maximum": 1.0 },
+            "y_max": { "type": "number", "maximum": 1.0 }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["created_at", "pipeline_version"],
+      "properties": {
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 UTC timestamp when this artifact was generated"
+        },
+        "pipeline_version": {
+          "type": "string",
+          "description": "Version of the GTA generation pipeline"
+        },
+        "quality_flags": {
+          "type": "array",
+          "description": "QA flags raised during processing",
+          "items": {
+            "type": "string",
+            "enum": [
+              "low_confidence",
+              "partial_occlusion",
+              "lighting_variance",
+              "pose_deviation",
+              "exif_present_stripped"
+            ]
+          }
+        },
+        "approved": {
+          "type": "boolean",
+          "description": "Whether this artifact has passed manual QA review"
+        }
+      }
+    }
+  }
+}
