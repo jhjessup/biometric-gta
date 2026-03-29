@@ -1,0 +1,30 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Environment
+.env
+.env.local
+!.env.example
+
+# Claude local settings (personal overrides)
+.claude/settings.local.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data (raw biometric artifacts — never commit)
+data/raw/
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.tiff
+!style/**/*.png
+!style/**/*.jpg
