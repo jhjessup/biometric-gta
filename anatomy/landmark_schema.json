@@ -111,7 +111,9 @@
               "partial_occlusion",
               "lighting_variance",
               "pose_deviation",
-              "exif_present_stripped"
+              "exif_present_stripped",
+                              "face_crop_used",
+                              "multiple_faces_detected"
             ]
           }
         },

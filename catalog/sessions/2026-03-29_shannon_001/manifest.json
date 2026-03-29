@@ -30,40 +30,24 @@
     "f7394775-cb61-4a48-ac3d-ef2ad3d46003",
     "539144fb-7a3e-4392-b810-6de869005408",
     "68d8ca9b-6ee7-41e2-ba5b-a0c66958d183",
-    "2973fada-8f43-4d9e-905e-72eb0be5f2e1"
+    "2973fada-8f43-4d9e-905e-72eb0be5f2e1",
+    "cf210fd6-2d66-41d8-a6e1-1c06936b6fa7",
+    "165e5116-6b99-4771-bc5a-244b84813688",
+    "4c6be79a-9a3b-4a19-9493-48f83f7a48b0",
+    "e443b2ed-81e6-4c53-9620-7c26c3bb7c6a",
+    "bed0b859-5c13-4417-a60d-8ea328c5520a",
+    "ac860632-f286-409d-9197-0ddb7f5e5196"
   ],
   "failed": [
     {
-      "file": "IMG_2795.JPG",
-      "error": "No face detected in image."
-    },
-    {
-      "file": "IMG_3800.HEIC",
-      "error": "No face detected in image."
-    },
-    {
-      "file": "IMG_4222.HEIC",
-      "error": "No face detected in image."
-    },
-    {
       "file": "IMG_4664.HEIC",
-      "error": "No face detected in image."
-    },
-    {
-      "file": "IMG_5130.HEIC",
-      "error": "No face detected in image."
-    },
-    {
-      "file": "IMG_5203.HEIC",
-      "error": "No face detected in image."
+      "error": "no_single_subject_detectable",
+      "note": "High-density group shot \u2014 9 faces detected by Haar cascade, none passed MediaPipe face presence threshold. Likely no single clear frontal subject."
     },
     {
       "file": "IMG_5357.HEIC",
-      "error": "No face detected in image."
-    },
-    {
-      "file": "IMG_5476.HEIC",
-      "error": "No face detected in image."
+      "error": "no_single_subject_detectable",
+      "note": "High-density group shot \u2014 7 faces detected by Haar cascade, none passed MediaPipe face presence threshold. Likely no single clear frontal subject."
     }
   ],
   "pipeline_version": "1.0.0",
