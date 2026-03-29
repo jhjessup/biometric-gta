@@ -3384,5 +3384,42 @@
     "subject_id": "subj_461f0955",
     "session_id": "2026-03-29_shannon_001",
     "source_filename": "IMG_4222.HEIC"
+  },
+  "enrichment": {
+    "model": "gemini-2.5-flash",
+    "enriched_at": "2026-03-29T23:16:20.322724+00:00",
+    "forensic": {
+      "face_shape": "oval",
+      "skin_tone": "fair",
+      "eye_color": "unknown",
+      "hair_color": "blonde",
+      "hair_length": "medium",
+      "hair_style": "wavy",
+      "facial_hair": "none",
+      "estimated_age_range": "30-40",
+      "distinctive_features": [],
+      "eyewear": "none",
+      "expression": "smiling"
+    },
+    "sartorial": {
+      "top_garment": "dress",
+      "top_color": "magenta",
+      "top_pattern": "floral",
+      "bottom_garment": "dress",
+      "bottom_color": "magenta",
+      "outerwear": "none",
+      "accessories": [
+        "clutch bag",
+        "necklace",
+        "bracelet"
+      ],
+      "footwear": "none_visible",
+      "style_category": "formal",
+      "notable_details": [
+        "lace detail",
+        "black belt",
+        "embellished clutch"
+      ]
+    }
   }
 }

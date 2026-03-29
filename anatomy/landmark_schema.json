@@ -122,6 +122,47 @@
           "description": "Whether this artifact has passed manual QA review"
         }
       }
+    },
+    "enrichment": {
+      "type": "object",
+      "description": "Optional Gemini-generated enrichment (forensic attributes + sartorial data)",
+      "properties": {
+        "model": { "type": "string", "description": "Gemini model used for enrichment" },
+        "enriched_at": { "type": "string", "format": "date-time" },
+        "forensic": {
+          "type": "object",
+          "description": "Forensic biometric attributes extracted by Gemini",
+          "properties": {
+            "face_shape":           { "type": "string" },
+            "skin_tone":            { "type": "string" },
+            "eye_color":            { "type": "string" },
+            "hair_color":           { "type": "string" },
+            "hair_length":          { "type": "string" },
+            "hair_style":           { "type": "string" },
+            "facial_hair":          { "type": "string" },
+            "estimated_age_range":  { "type": "string" },
+            "distinctive_features": { "type": "array", "items": { "type": "string" } },
+            "eyewear":              { "type": "string" },
+            "expression":           { "type": "string" }
+          }
+        },
+        "sartorial": {
+          "type": "object",
+          "description": "Clothing and accessories observed by Gemini",
+          "properties": {
+            "top_garment":      { "type": "string" },
+            "top_color":        { "type": "string" },
+            "top_pattern":      { "type": "string" },
+            "bottom_garment":   { "type": "string" },
+            "bottom_color":     { "type": "string" },
+            "outerwear":        { "type": "string" },
+            "accessories":      { "type": "array", "items": { "type": "string" } },
+            "footwear":         { "type": "string" },
+            "style_category":   { "type": "string" },
+            "notable_details":  { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      }
     }
   }
 }

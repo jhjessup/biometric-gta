@@ -3385,5 +3385,34 @@
     "subject_id": "subj_461f0955",
     "session_id": "2026-03-29_shannon_001",
     "source_filename": "IMG_3800.HEIC"
+  },
+  "enrichment": {
+    "model": "gemini-2.5-flash",
+    "enriched_at": "2026-03-29T23:16:49.020462+00:00",
+    "forensic": {
+      "face_shape": "oval",
+      "skin_tone": "light",
+      "eye_color": "unknown",
+      "hair_color": "brown",
+      "hair_length": "long",
+      "hair_style": "wavy",
+      "facial_hair": "none",
+      "estimated_age_range": "20-30",
+      "distinctive_features": [],
+      "eyewear": "none",
+      "expression": "smiling"
+    },
+    "sartorial": {
+      "top_garment": "top",
+      "top_color": "black",
+      "top_pattern": "solid",
+      "bottom_garment": "skirt",
+      "bottom_color": "white",
+      "outerwear": "none",
+      "accessories": [],
+      "footwear": "sandals",
+      "style_category": "casual",
+      "notable_details": []
+    }
   }
 }

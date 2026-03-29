@@ -47,6 +47,18 @@
   - 4 of those also flagged `multiple_faces_detected` (group shots)
 - 2 unrecoverable (`IMG_4664`, `IMG_5357`): high-density crowd shots, flagged `no_single_subject_detectable`
 
+### 2026-03-29 — Gemini Enrichment
+
+**Gemini enrichment pipeline**
+- [x] `agents/gemini_enricher.py` — Gemini 2.5 Flash vision enricher; resizes to 320px, structured JSON output
+- [x] `anatomy/landmark_schema.json` — Added `enrichment` block (`forensic` + `sartorial` subsections) and new quality flags
+- [x] `scripts/requirements.txt` — Added `google-generativeai>=0.8.0`
+- [x] `.env.example` — Added `GEMINI_API_KEY=` template entry
+- [x] All 13 cluster artifacts enriched (IMG_2809 mismatch excluded)
+  - Consistent forensic profile: oval face, fair-medium skin, brown/dark_brown hair, smiling expression
+  - Sartorial: varied (dresses, tops in multiple colors)
+  - Free-tier rate limit (5 req/min) handled with 13s delays between calls
+
 ### 2026-03-29 — Consistency Analysis
 - [x] Landmark geometry descriptor built (12 key points, normalized by inter-ocular distance)
 - [x] Pairwise distance matrix computed across all 14 artifacts
@@ -59,6 +71,7 @@
 ## In Progress
 
 - [ ] Manual QA review — visually confirm `IMG_2809.JPG` mismatch, set `approved: true` on 13-image cluster
+- [ ] Re-strip all 16 images with ICC-profile-removing `exif_stripper.py` and update artifact `source.image_hash` values
 
 ---
 

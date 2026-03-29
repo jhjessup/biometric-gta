@@ -23,11 +23,12 @@ def strip_exif(input_path: str | Path) -> tuple[bytes, str]:
     """
     input_path = Path(input_path)
     with Image.open(input_path) as img:
-        # Convert to RGB to drop any embedded profile/transparency that carries metadata
+        # Convert to sRGB (strips ICC profile / Display P3 / device color space)
         clean = img.convert(img.mode if img.mode in ("RGB", "L") else "RGB")
 
         buf = io.BytesIO()
-        clean.save(buf, format="PNG", exif=b"")
+        # exif=b"" removes EXIF; omitting icc_profile param drops it entirely
+        clean.save(buf, format="PNG", exif=b"", icc_profile=None)
         image_bytes = buf.getvalue()
 
     sha256 = hashlib.sha256(image_bytes).hexdigest()
@@ -49,10 +50,11 @@ def strip_exif_to_file(input_path: str | Path, output_path: str | Path) -> str:
 
 
 def verify_no_exif(image_path: str | Path) -> bool:
-    """Return True if image has no EXIF data."""
+    """Return True if image has no EXIF data and no ICC color profile."""
     with Image.open(image_path) as img:
         exif = img.info.get("exif", b"")
-        return len(exif) == 0
+        icc = img.info.get("icc_profile", b"")
+        return len(exif) == 0 and len(icc) == 0
 
 
 if __name__ == "__main__":
