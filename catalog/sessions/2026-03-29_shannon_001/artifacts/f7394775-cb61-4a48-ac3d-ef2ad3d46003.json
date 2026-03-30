@@ -3409,7 +3409,7 @@
   },
   "geometry": {
     "analyzer_version": "1.0.0",
-    "analyzed_at": "2026-03-29T23:30:23.387180+00:00",
+    "analyzed_at": "2026-03-30T03:01:32.544788+00:00",
     "iod_raw": 0.044066,
     "measurements": {
       "eye_left_width_norm": 0.7553,
@@ -3425,7 +3425,7 @@
       "canthal_index": 0.3996,
       "eye_level_asymmetry_norm": 0.0576,
       "canthal_tilt_left_deg": 7.47,
-      "canthal_tilt_right_deg": 175.5,
+      "canthal_tilt_right_deg": -4.5,
       "brow_left_width_norm": 0.1622,
       "brow_right_width_norm": 0.1666,
       "brow_width_symmetry": 0.9733,

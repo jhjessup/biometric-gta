@@ -27,6 +27,12 @@ models/*.tflite
 data/
 catalog/sessions/*/stripped/
 
+# Synthetic generation output (local only)
+synthetic/
+
+# Core dumps
+core
+
 # Raw image formats
 *.jpg
 *.jpeg

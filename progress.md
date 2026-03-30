@@ -124,13 +124,16 @@
 - [x] `scripts/perchance_driver.py` — Playwright automation wrapper for perchance.org; fills prompt/negative/style/seed/batch fields; downloads generated images; `--dump-selectors` debug mode
 - [x] `scripts/calibration_loop.py` — full calibration loop: build prompt → generate → measure synthetic → delta vs. GT → tuning suggestions; `--dry-run` and `--tune` flags for iteration
 - [x] Fixed `canthal_tilt_right_deg` bug in `geometry_analyzer.py` (was returning ~180° due to mirrored x-direction); recomputed all 45 artifacts
-- [x] `scripts/requirements.txt` — added `playwright>=1.40.0`
 - Calibration target: `IMG_5140.HEIC` (session 001) — highest symmetry (0.043), enriched, no quality flags
-- Dry-run verified: prompt generates correctly from artifact
+- Dry-run verified: prompt builds and formats correctly from artifact
 
-**To run first live calibration:**
+**Driver status:** `perchance_driver.py` uses Playwright, which requires a desktop/GUI environment with GPU support. This server environment (headless, no GPU) cannot run a browser. The `pypi:perchance` package also depends on Playwright. Next step is to replace the driver with a direct HTTP client approach after reverse-engineering the perchance API endpoints from a local browser session.
+
+**To run first live calibration (on a local machine with a browser):**
 ```bash
+source .venv/bin/activate
 pip install playwright && playwright install chromium
+python -m scripts.perchance_driver --dump-selectors   # verify DOM selectors first
 python -m scripts.calibration_loop catalog/sessions/2026-03-29_shannon_001/artifacts/539144fb-7a3e-4392-b810-6de869005408.json --batch 3
 ```
 
@@ -144,7 +147,8 @@ python -m scripts.calibration_loop catalog/sessions/2026-03-29_shannon_001/artif
 
 ## Upcoming
 
-- [ ] Live calibration run — install playwright, execute first generation, iterate on delta
+- [ ] Replace `perchance_driver.py` with direct HTTP client — capture API endpoints from a local browser session (DevTools Network tab on perchance.org), then rewrite driver using `httpx`/`requests` to eliminate browser dependency
+- [ ] Live calibration run — execute first generation + delta measurement, iterate on prompt tuning
 - [ ] Update `style/capture_guidelines.md` with multi-angle full-body capture protocol
 - [ ] Unit tests for EXIF stripper and landmark validator
 - [ ] CI: JSON schema validation on artifact output

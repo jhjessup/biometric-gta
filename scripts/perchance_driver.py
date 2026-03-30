@@ -97,7 +97,10 @@ def run_generation(
     saved_paths = []
 
     with sync_playwright() as pw:
-        browser = pw.chromium.launch(headless=headless)
+        browser = pw.chromium.launch(
+            headless=headless,
+            args=["--disable-gpu", "--disable-dev-shm-usage", "--no-sandbox"],
+        )
         context = browser.new_context(
             viewport={"width": 1280, "height": 900},
             user_agent=(
@@ -239,7 +242,10 @@ def dump_selectors(url: str) -> None:
         sys.exit(1)
 
     with sync_playwright() as pw:
-        browser = pw.chromium.launch(headless=True)
+        browser = pw.chromium.launch(
+            headless=True,
+            args=["--disable-gpu", "--disable-dev-shm-usage", "--no-sandbox"],
+        )
         page = browser.new_page()
         page.goto(url, wait_until="networkidle", timeout=30000)
         page.wait_for_timeout(2000)

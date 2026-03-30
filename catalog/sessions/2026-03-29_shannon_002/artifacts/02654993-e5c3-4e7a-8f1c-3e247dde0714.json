@@ -1,9 +1,9 @@
 {
-  "artifact_id": "ac860632-f286-409d-9197-0ddb7f5e5196",
+  "artifact_id": "02654993-e5c3-4e7a-8f1c-3e247dde0714",
   "schema_version": "1.0.0",
   "source": {
-    "image_hash": "53e9e1ebcdaab77e447713f050c1aeb2e8e0616df3a5096c903b63abd25f12d9",
-    "capture_timestamp": "2026-03-29T22:26:24.675193+00:00",
+    "image_hash": "2246107df22440b8645e65ba32309a5ca8348b5c2866748179361fc349dbffa7",
+    "capture_timestamp": "2026-03-30T02:16:26.742220+00:00",
     "resolution": {
       "width": 4032,
       "height": 3024
@@ -3368,7 +3368,7 @@
     }
   },
   "metadata": {
-    "created_at": "2026-03-29T22:26:24.675233+00:00",
+    "created_at": "2026-03-30T02:16:26.742251+00:00",
     "pipeline_version": "1.0.0",
     "quality_flags": [
       "face_crop_used",
@@ -3383,41 +3383,12 @@
     ],
     "approved": false,
     "subject_id": "subj_461f0955",
-    "session_id": "2026-03-29_shannon_001",
+    "session_id": "2026-03-29_shannon_002",
     "source_filename": "IMG_3800.HEIC"
-  },
-  "enrichment": {
-    "model": "gemini-2.5-flash",
-    "enriched_at": "2026-03-29T23:16:49.020462+00:00",
-    "forensic": {
-      "face_shape": "oval",
-      "skin_tone": "light",
-      "eye_color": "unknown",
-      "hair_color": "brown",
-      "hair_length": "long",
-      "hair_style": "wavy",
-      "facial_hair": "none",
-      "estimated_age_range": "20-30",
-      "distinctive_features": [],
-      "eyewear": "none",
-      "expression": "smiling"
-    },
-    "sartorial": {
-      "top_garment": "top",
-      "top_color": "black",
-      "top_pattern": "solid",
-      "bottom_garment": "skirt",
-      "bottom_color": "white",
-      "outerwear": "none",
-      "accessories": [],
-      "footwear": "sandals",
-      "style_category": "casual",
-      "notable_details": []
-    }
   },
   "geometry": {
     "analyzer_version": "1.0.0",
-    "analyzed_at": "2026-03-30T03:01:32.474802+00:00",
+    "analyzed_at": "2026-03-30T03:01:32.555015+00:00",
     "iod_raw": 0.077213,
     "measurements": {
       "eye_left_width_norm": 0.7327,
@@ -3465,6 +3436,375 @@
       "facial_third_mid": 0.2881,
       "facial_third_lower": 0.4102,
       "symmetry_index": 0.3533
+    }
+  },
+  "body_pose": {
+    "landmarks": [
+      {
+        "index": 0,
+        "name": "nose",
+        "x": 0.502553,
+        "y": 0.385211,
+        "z": -0.234701,
+        "visibility": 1.0
+      },
+      {
+        "index": 1,
+        "name": "left_eye_inner",
+        "x": 0.510928,
+        "y": 0.373292,
+        "z": -0.230666,
+        "visibility": 1.0
+      },
+      {
+        "index": 2,
+        "name": "left_eye",
+        "x": 0.514556,
+        "y": 0.374086,
+        "z": -0.2306,
+        "visibility": 1.0
+      },
+      {
+        "index": 3,
+        "name": "left_eye_outer",
+        "x": 0.518053,
+        "y": 0.374874,
+        "z": -0.23064,
+        "visibility": 1.0
+      },
+      {
+        "index": 4,
+        "name": "right_eye_inner",
+        "x": 0.50059,
+        "y": 0.371191,
+        "z": -0.215682,
+        "visibility": 1.0
+      },
+      {
+        "index": 5,
+        "name": "right_eye",
+        "x": 0.497453,
+        "y": 0.370457,
+        "z": -0.215713,
+        "visibility": 1.0
+      },
+      {
+        "index": 6,
+        "name": "right_eye_outer",
+        "x": 0.494331,
+        "y": 0.369624,
+        "z": -0.215838,
+        "visibility": 1.0
+      },
+      {
+        "index": 7,
+        "name": "left_ear",
+        "x": 0.525325,
+        "y": 0.384518,
+        "z": -0.15868,
+        "visibility": 1.0
+      },
+      {
+        "index": 8,
+        "name": "right_ear",
+        "x": 0.495736,
+        "y": 0.37598,
+        "z": -0.097645,
+        "visibility": 1.0
+      },
+      {
+        "index": 9,
+        "name": "mouth_left",
+        "x": 0.509129,
+        "y": 0.401436,
+        "z": -0.205661,
+        "visibility": 1.0
+      },
+      {
+        "index": 10,
+        "name": "mouth_right",
+        "x": 0.497472,
+        "y": 0.398872,
+        "z": -0.188771,
+        "visibility": 1.0
+      },
+      {
+        "index": 11,
+        "name": "left_shoulder",
+        "x": 0.548961,
+        "y": 0.458216,
+        "z": -0.186718,
+        "visibility": 0.9994
+      },
+      {
+        "index": 12,
+        "name": "right_shoulder",
+        "x": 0.488451,
+        "y": 0.446861,
+        "z": 0.047275,
+        "visibility": 0.9997
+      },
+      {
+        "index": 13,
+        "name": "left_elbow",
+        "x": 0.52547,
+        "y": 0.567915,
+        "z": -0.265791,
+        "visibility": 0.9964
+      },
+      {
+        "index": 14,
+        "name": "right_elbow",
+        "x": 0.432396,
+        "y": 0.517885,
+        "z": -0.058877,
+        "visibility": 0.8908
+      },
+      {
+        "index": 15,
+        "name": "left_wrist",
+        "x": 0.48609,
+        "y": 0.484873,
+        "z": -0.3139,
+        "visibility": 0.9959
+      },
+      {
+        "index": 16,
+        "name": "right_wrist",
+        "x": 0.447304,
+        "y": 0.464388,
+        "z": -0.310647,
+        "visibility": 0.9571
+      },
+      {
+        "index": 17,
+        "name": "left_pinky",
+        "x": 0.473372,
+        "y": 0.466021,
+        "z": -0.339599,
+        "visibility": 0.9906
+      },
+      {
+        "index": 18,
+        "name": "right_pinky",
+        "x": 0.443783,
+        "y": 0.442141,
+        "z": -0.338845,
+        "visibility": 0.9183
+      },
+      {
+        "index": 19,
+        "name": "left_index",
+        "x": 0.477392,
+        "y": 0.455651,
+        "z": -0.333293,
+        "visibility": 0.9898
+      },
+      {
+        "index": 20,
+        "name": "right_index",
+        "x": 0.452902,
+        "y": 0.435263,
+        "z": -0.327719,
+        "visibility": 0.9093
+      },
+      {
+        "index": 21,
+        "name": "left_thumb",
+        "x": 0.482246,
+        "y": 0.461774,
+        "z": -0.309466,
+        "visibility": 0.9849
+      },
+      {
+        "index": 22,
+        "name": "right_thumb",
+        "x": 0.456429,
+        "y": 0.445229,
+        "z": -0.312038,
+        "visibility": 0.8896
+      },
+      {
+        "index": 23,
+        "name": "left_hip",
+        "x": 0.536862,
+        "y": 0.643245,
+        "z": -0.088573,
+        "visibility": 0.9992
+      },
+      {
+        "index": 24,
+        "name": "right_hip",
+        "x": 0.51689,
+        "y": 0.633286,
+        "z": 0.088677,
+        "visibility": 0.9994
+      },
+      {
+        "index": 25,
+        "name": "left_knee",
+        "x": 0.507254,
+        "y": 0.782026,
+        "z": -0.136437,
+        "visibility": 0.9996
+      },
+      {
+        "index": 26,
+        "name": "right_knee",
+        "x": 0.531887,
+        "y": 0.77385,
+        "z": 0.153079,
+        "visibility": 0.8624
+      },
+      {
+        "index": 27,
+        "name": "left_ankle",
+        "x": 0.527697,
+        "y": 0.921882,
+        "z": -0.118756,
+        "visibility": 0.9952
+      },
+      {
+        "index": 28,
+        "name": "right_ankle",
+        "x": 0.56583,
+        "y": 0.903465,
+        "z": 0.271614,
+        "visibility": 0.9504
+      },
+      {
+        "index": 29,
+        "name": "left_heel",
+        "x": 0.538449,
+        "y": 0.939505,
+        "z": -0.119986,
+        "visibility": 0.9968
+      },
+      {
+        "index": 30,
+        "name": "right_heel",
+        "x": 0.571775,
+        "y": 0.92753,
+        "z": 0.277544,
+        "visibility": 0.9717
+      },
+      {
+        "index": 31,
+        "name": "left_foot_index",
+        "x": 0.488794,
+        "y": 0.947513,
+        "z": -0.205545,
+        "visibility": 0.9865
+      },
+      {
+        "index": 32,
+        "name": "right_foot_index",
+        "x": 0.52683,
+        "y": 0.931363,
+        "z": 0.209661,
+        "visibility": 0.9272
+      }
+    ],
+    "confidence": 0.97606,
+    "validator": "pose_landmarker_full",
+    "landmark_count": 33,
+    "coverage": {
+      "head": true,
+      "upper_body": true,
+      "arms": true,
+      "torso": true,
+      "lower_body": true,
+      "full_legs": true,
+      "feet": true
+    }
+  },
+  "body_geometry": {
+    "analyzer_version": "1.0.0",
+    "analyzed_at": "2026-03-30T02:16:28.017590+00:00",
+    "calibration": {
+      "method": "iod_population_mean",
+      "iod_calibration_mm": 63.0,
+      "cm_per_norm_unit": 81.5925
+    },
+    "coverage": {
+      "head": true,
+      "upper_body": true,
+      "arms": true,
+      "torso": true,
+      "lower_body": true,
+      "full_legs": true,
+      "feet": true
+    },
+    "measurements": {
+      "shoulder_width_norm": 0.061566,
+      "shoulder_width_cm": 5.0,
+      "shoulder_width_note": "Biacromial width estimated from anterior shoulder landmarks",
+      "hip_width_norm": 0.022317,
+      "hip_width_cm": 1.8,
+      "hip_width_note": "Bi-iliac width (anterior) from hip landmarks; lateral circumference not available from single frontal view",
+      "waist_width_cm": 4.3,
+      "waist_width_note": "Estimated as 85% of shoulder width (population mean proxy). Actual waist requires multi-angle capture or depth sensor.",
+      "chest_width_cm": 4.6,
+      "chest_width_note": "Estimated as 92% of shoulder width (population mean proxy for chest breadth). Bust circumference not derivable from 2D pose landmarks.",
+      "torso_length_norm": 0.185907,
+      "torso_length_cm": 15.2,
+      "upper_arm_left_cm": 11.2,
+      "upper_arm_right_cm": 11.4,
+      "lower_arm_left_cm": 8.5,
+      "lower_arm_right_cm": 21.0,
+      "arm_left_cm": 19.7,
+      "arm_right_cm": 32.4,
+      "arm_symmetry": 0.6066,
+      "upper_leg_left_cm": 12.2,
+      "upper_leg_right_cm": 12.7,
+      "lower_leg_left_cm": 11.6,
+      "lower_leg_right_cm": 14.6,
+      "leg_left_cm": 23.8,
+      "leg_right_cm": 27.3,
+      "leg_symmetry": 0.8742,
+      "height_cm": 55.1,
+      "height_note": "Estimated from pose landmark span (nose\u2192ground) + head height from facial geometry. Accuracy \u00b15\u201310% from single frontal image; calibrate against known reference for precision.",
+      "shoulder_to_hip_ratio": 2.7587,
+      "torso_to_leg_ratio": 0.5935,
+      "arm_to_leg_ratio": 1.0189,
+      "upper_to_lower_arm_ratio": 0.7654,
+      "upper_to_lower_leg_ratio": 0.9495,
+      "shoulder_level_diff_cm": 0.9,
+      "shoulder_level_diff_norm": 0.011355,
+      "hip_level_diff_norm": 0.009959,
+      "hip_level_diff_cm": 0.8,
+      "trunk_lean_deg": 2.52
+    }
+  },
+  "enrichment": {
+    "model": "gemini-2.5-flash",
+    "enriched_at": "2026-03-30T02:20:53.366514+00:00",
+    "forensic": {
+      "face_shape": "oval",
+      "skin_tone": "light",
+      "eye_color": "brown",
+      "hair_color": "brown",
+      "hair_length": "long",
+      "hair_style": "wavy",
+      "facial_hair": "none",
+      "estimated_age_range": "20-30",
+      "distinctive_features": [],
+      "eyewear": "none",
+      "expression": "smiling"
+    },
+    "sartorial": {
+      "top_garment": "top",
+      "top_color": "black",
+      "top_pattern": "solid",
+      "bottom_garment": "skirt",
+      "bottom_color": "white",
+      "outerwear": "none",
+      "accessories": [],
+      "footwear": "sandals",
+      "style_category": "casual",
+      "notable_details": [
+        "striped skirt"
+      ]
     }
   }
 }
