@@ -141,8 +141,10 @@ def analyze_geometry(artifact: dict) -> dict:
         dy = p2["y"] - p1["y"]
         return round(math.degrees(math.atan2(dy, dx)), 2)
 
+    # Left eye: outer→inner (left→right in image, dx positive)
+    # Right eye: inner→outer (left→right in image, dx positive) to match directional convention
     m["canthal_tilt_left_deg"]     = _angle_deg(pt("left_eye_outer"),  pt("left_eye_inner"))
-    m["canthal_tilt_right_deg"]    = _angle_deg(pt("right_eye_outer"), pt("right_eye_inner"))
+    m["canthal_tilt_right_deg"]    = _angle_deg(pt("right_eye_inner"), pt("right_eye_outer"))
 
     # ------------------------------------------------------------------
     # 2. Eyebrow measurements

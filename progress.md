@@ -118,9 +118,33 @@
 
 ---
 
+### 2026-03-29 — Synthesizer Calibration Layer
+
+- [x] `agents/prompt_builder.py` — translates GTA artifact → weighted SD prompt pair; 7 descriptor lookup tables mapped from geometry measurements; sartorial block from enrichment; optics constants
+- [x] `scripts/perchance_driver.py` — Playwright automation wrapper for perchance.org; fills prompt/negative/style/seed/batch fields; downloads generated images; `--dump-selectors` debug mode
+- [x] `scripts/calibration_loop.py` — full calibration loop: build prompt → generate → measure synthetic → delta vs. GT → tuning suggestions; `--dry-run` and `--tune` flags for iteration
+- [x] Fixed `canthal_tilt_right_deg` bug in `geometry_analyzer.py` (was returning ~180° due to mirrored x-direction); recomputed all 45 artifacts
+- [x] `scripts/requirements.txt` — added `playwright>=1.40.0`
+- Calibration target: `IMG_5140.HEIC` (session 001) — highest symmetry (0.043), enriched, no quality flags
+- Dry-run verified: prompt generates correctly from artifact
+
+**To run first live calibration:**
+```bash
+pip install playwright && playwright install chromium
+python -m scripts.calibration_loop catalog/sessions/2026-03-29_shannon_001/artifacts/539144fb-7a3e-4392-b810-6de869005408.json --batch 3
+```
+
+---
+
+## In Progress
+
+- [ ] Gemini enrichment — 21 artifacts in session 002 pending (daily quota reset required)
+- [ ] Manual QA review — resolve `IMG_2809.JPG` mismatch flag; confirm `lp_image` files as non-frontal; set `approved: true` on primary cluster
+- [ ] Re-strip all 16 images with ICC-profile-removing `exif_stripper.py` and update artifact `source.image_hash` values
+
 ## Upcoming
 
-- [ ] Add `body_pose` and `body_geometry` blocks to `anatomy/landmark_schema.json`
+- [ ] Live calibration run — install playwright, execute first generation, iterate on delta
 - [ ] Update `style/capture_guidelines.md` with multi-angle full-body capture protocol
 - [ ] Unit tests for EXIF stripper and landmark validator
 - [ ] CI: JSON schema validation on artifact output
