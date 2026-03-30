@@ -182,6 +182,113 @@
         }
       }
     },
+    "body_pose": {
+      "type": "object",
+      "description": "Full-body pose landmarks from MediaPipe PoseLandmarker (33 3D points). Best-effort — head/shoulder images yield partial results.",
+      "properties": {
+        "landmarks": {
+          "type": "array",
+          "description": "33 BlazePose GHUM landmarks in normalized image coordinates",
+          "minItems": 1,
+          "maxItems": 33,
+          "items": {
+            "type": "object",
+            "required": ["index", "name", "x", "y", "z", "visibility"],
+            "properties": {
+              "index":      { "type": "integer", "minimum": 0, "maximum": 32 },
+              "name":       { "type": "string" },
+              "x":          { "type": "number", "description": "Normalized x coordinate (0.0–1.0)" },
+              "y":          { "type": "number", "description": "Normalized y coordinate (0.0–1.0)" },
+              "z":          { "type": "number", "description": "Depth relative to hip midpoint" },
+              "visibility": { "type": "number", "minimum": 0.0, "maximum": 1.0 }
+            }
+          }
+        },
+        "confidence": {
+          "type": "number",
+          "description": "Mean landmark visibility across all 33 points",
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "validator":      { "type": "string", "description": "MediaPipe model used", "enum": ["pose_landmarker_full"] },
+        "landmark_count": { "type": "integer", "minimum": 1, "maximum": 33 },
+        "coverage": {
+          "type": "object",
+          "description": "Which body regions have landmark visibility > 0.5",
+          "properties": {
+            "head":        { "type": "boolean" },
+            "upper_body":  { "type": "boolean" },
+            "arms":        { "type": "boolean" },
+            "torso":       { "type": "boolean" },
+            "lower_body":  { "type": "boolean" },
+            "full_legs":   { "type": "boolean" },
+            "feet":        { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "body_geometry": {
+      "type": "object",
+      "description": "Anthropometric measurements derived from body_pose landmarks. Linear measurements converted to cm via IOD calibration (population mean IOD = 63 mm). Circumferences are not derivable from single-view 2D pose and are not included.",
+      "properties": {
+        "analyzer_version": { "type": "string" },
+        "analyzed_at":      { "type": "string", "format": "date-time" },
+        "calibration": {
+          "type": "object",
+          "properties": {
+            "method":             { "type": "string", "enum": ["iod_population_mean", "none"] },
+            "iod_calibration_mm": { "type": "number", "description": "Population mean IOD used (63.0 mm)" },
+            "cm_per_norm_unit":   { "type": "number", "description": "Derived scale factor" }
+          }
+        },
+        "coverage": {
+          "$ref": "#/properties/body_pose/properties/coverage"
+        },
+        "measurements": {
+          "type": "object",
+          "properties": {
+            "shoulder_width_norm":      { "type": "number", "description": "Biacromial width in normalized image coordinates" },
+            "shoulder_width_cm":        { "type": ["number", "null"] },
+            "shoulder_width_note":      { "type": "string" },
+            "hip_width_norm":           { "type": "number", "description": "Bi-iliac width in normalized image coordinates" },
+            "hip_width_cm":             { "type": ["number", "null"] },
+            "hip_width_note":           { "type": "string" },
+            "waist_width_cm":           { "type": ["number", "null"], "description": "Estimated as 85% of shoulder width — requires multi-angle capture for accuracy" },
+            "waist_width_note":         { "type": "string" },
+            "chest_width_cm":           { "type": ["number", "null"], "description": "Estimated as 92% of shoulder width — breadth only, not circumference" },
+            "chest_width_note":         { "type": "string" },
+            "torso_length_norm":        { "type": "number" },
+            "torso_length_cm":          { "type": ["number", "null"] },
+            "upper_arm_left_cm":        { "type": ["number", "null"] },
+            "upper_arm_right_cm":       { "type": ["number", "null"] },
+            "lower_arm_left_cm":        { "type": ["number", "null"] },
+            "lower_arm_right_cm":       { "type": ["number", "null"] },
+            "arm_left_cm":              { "type": ["number", "null"] },
+            "arm_right_cm":             { "type": ["number", "null"] },
+            "arm_symmetry":             { "type": ["number", "null"], "description": "left/right arm length ratio; 1.0 = perfect symmetry" },
+            "upper_leg_left_cm":        { "type": ["number", "null"] },
+            "upper_leg_right_cm":       { "type": ["number", "null"] },
+            "lower_leg_left_cm":        { "type": ["number", "null"] },
+            "lower_leg_right_cm":       { "type": ["number", "null"] },
+            "leg_left_cm":              { "type": ["number", "null"] },
+            "leg_right_cm":             { "type": ["number", "null"] },
+            "leg_symmetry":             { "type": ["number", "null"], "description": "left/right leg length ratio; 1.0 = perfect symmetry" },
+            "height_cm":                { "type": ["number", "null"], "description": "Estimated full standing height. Accuracy ±5–10% from single frontal image." },
+            "height_note":              { "type": "string" },
+            "shoulder_to_hip_ratio":    { "type": ["number", "null"] },
+            "torso_to_leg_ratio":       { "type": ["number", "null"] },
+            "arm_to_leg_ratio":         { "type": ["number", "null"] },
+            "upper_to_lower_arm_ratio": { "type": ["number", "null"] },
+            "upper_to_lower_leg_ratio": { "type": ["number", "null"] },
+            "shoulder_level_diff_cm":   { "type": ["number", "null"], "description": "Vertical shoulder asymmetry in cm; 0 = level" },
+            "shoulder_level_diff_norm": { "type": ["number", "null"] },
+            "hip_level_diff_norm":      { "type": ["number", "null"] },
+            "hip_level_diff_cm":        { "type": ["number", "null"] },
+            "trunk_lean_deg":           { "type": ["number", "null"], "description": "Lateral trunk lean angle in degrees; 0 = perfectly vertical" }
+          }
+        }
+      }
+    },
     "enrichment": {
       "type": "object",
       "description": "Optional Gemini-generated enrichment (forensic attributes + sartorial data)",
