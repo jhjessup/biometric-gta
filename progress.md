@@ -68,8 +68,32 @@
 
 ---
 
+### 2026-03-29 — Full Body Biometric Pipeline + Session 002
+
+**New agents**
+- [x] `agents/pose_validator.py` — MediaPipe PoseLandmarker (33-point 3D), multi-scale detection, coverage flags
+- [x] `agents/body_analyzer.py` — Anthropometric measurements from pose landmarks: shoulder/hip/waist/chest width, torso + arm + leg lengths, height estimate, body ratios, posture indicators; cm calibration via IOD population mean (63mm)
+- [x] `scripts/setup_models.sh` — Added `pose_landmarker.task` download
+- [x] `scripts/ingest_session.py` — Added stages 3–5: facial geometry, pose validation, body geometry
+- [x] `models/pose_landmarker.task` — Downloaded (9.4 MB)
+
+**Session `2026-03-29_shannon_002` (18 new images + 16 reprocessed)**
+- 34 source images total (all files in source_images_shannon)
+- 31 artifacts generated, 3 failed (IMG_2281, IMG_4664, IMG_5357 — crowd shots, no isolatable subject)
+- Body pose detected in all 31; coverage breakdown:
+  - 10 with full legs/feet visible (height estimable)
+  - 3 with lower body partial
+  - 18 head/shoulder only
+- Height estimates range 32–165 cm; only `IMG_3929.HEIC` (165.5 cm) plausible for single-subject full-body
+- Shoulder widths 21–52 cm for clean single-subject shots; group/anomalous shots excluded
+- `lp_image.HEIC` flagged anomalous (facial_index=291, shoulder=152 cm) — likely non-standard orientation
+- 10 Gemini enrichments completed; 21 pending (free-tier daily cap of 20 req/day hit)
+
+---
+
 ## In Progress
 
+- [ ] Gemini enrichment — 21 artifacts in session 002 pending (daily quota reset required)
 - [ ] Manual QA review — visually confirm `IMG_2809.JPG` mismatch, set `approved: true` on 13-image cluster
 - [ ] Re-strip all 16 images with ICC-profile-removing `exif_stripper.py` and update artifact `source.image_hash` values
 
@@ -77,9 +101,11 @@
 
 ## Upcoming
 
+- [ ] Add `body_pose` and `body_geometry` blocks to `anatomy/landmark_schema.json`
+- [ ] Update `style/capture_guidelines.md` with multi-angle full-body capture protocol
 - [ ] Unit tests for EXIF stripper and landmark validator
 - [ ] CI: JSON schema validation on artifact output
-- [ ] Second session ingest (additional subjects or captures)
+- [ ] Height calibration improvement — multi-angle or known-reference approach
 
 ---
 

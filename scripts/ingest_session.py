@@ -29,6 +29,9 @@ def ingest_session(source_dir: Path, session_id: str, subject_id: str) -> dict:
     sys.path.insert(0, str(REPO_ROOT))
     from agents.exif_stripper import strip_exif_to_file, verify_no_exif
     from agents.landmark_validator import save_artifact, validate_landmarks
+    from agents.geometry_analyzer import analyze_geometry
+    from agents.pose_validator import validate_pose
+    from agents.body_analyzer import analyze_body
 
     session_dir = REPO_ROOT / "catalog" / "sessions" / session_id
     artifacts_dir = session_dir / "artifacts"
@@ -74,7 +77,36 @@ def ingest_session(source_dir: Path, session_id: str, subject_id: str) -> dict:
             conf = artifact["landmarks"]["confidence"]
             print(f"         confidence={conf:.3f}  flags={flags or 'none'}")
 
-            # Stage 3: Save artifact
+            # Stage 3: Facial geometry
+            try:
+                artifact["geometry"] = analyze_geometry(artifact)
+                fi = artifact["geometry"]["measurements"].get("facial_index", "?")
+                sym = artifact["geometry"]["measurements"].get("symmetry_index", "?")
+                print(f"         geometry OK  facial_index={fi}  symmetry={sym}")
+            except Exception as e:
+                print(f"         geometry SKIP: {e}")
+
+            # Stage 4: Body pose (best-effort — head/shoulder images return None)
+            try:
+                pose = validate_pose(stripped_path)
+                if pose:
+                    artifact["body_pose"] = pose
+                    cov = [k for k, v in pose["coverage"].items() if v]
+                    print(f"         pose OK  coverage={cov}")
+                    # Stage 5: Body geometry (requires pose)
+                    try:
+                        artifact["body_geometry"] = analyze_body(artifact)
+                        h = artifact["body_geometry"]["measurements"].get("height_cm", "?")
+                        sw = artifact["body_geometry"]["measurements"].get("shoulder_width_cm", "?")
+                        print(f"         body OK  height={h}cm  shoulder={sw}cm")
+                    except Exception as e:
+                        print(f"         body_geometry SKIP: {e}")
+                else:
+                    print(f"         pose: no full-body pose detected")
+            except Exception as e:
+                print(f"         pose SKIP: {e}")
+
+            # Stage 6: Save artifact
             artifact_path = artifacts_dir / f"{artifact['artifact_id']}.json"
             save_artifact(artifact, artifact_path)
             artifact_ids.append(artifact["artifact_id"])
