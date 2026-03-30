@@ -262,15 +262,20 @@ python -m scripts.calibration_loop \
 
 ---
 
+### 2026-03-30 — Documentation, Tests & CI Tooling
+
+- [x] `style/capture_guidelines.md` — Added `## Full-Body Multi-Angle Capture Protocol` section: camera geometry (tripod at mid-thigh, 35–50mm lens), required angles (0°/±45°), calibration target spec (200×200mm reference object), subject stance, lighting (fill at ±30°, floor shadow management), acceptance criteria table, and pipeline limitation notes on IOD-based height estimation
+- [x] `tests/test_agents.py` — pytest unit tests for `exif_stripper` (strip, strip-to-file, verify, determinism, nested dir creation) and `landmark_validator` (artifact schema, source/landmarks/metadata structure, quality flags for low_confidence and face_crop_used, save_artifact roundtrip)
+- [x] `scripts/validate_artifacts.py` — CI schema validation script; validates all (or one session's) artifact JSONs against `anatomy/landmark_schema.json` (draft-07); prints session/artifact/status table; exits 1 on any failure
+
+---
+
 ## Upcoming
 
 - [ ] First InstantID calibration run — start Kaggle notebook, set INSTANTID_SERVER_URL, run calibration loop
 - [ ] Locate or re-strip `IMG_5140.HEIC` for use as `--reference` input
 - [ ] Calibration: `mouth_to_iod_ratio` ceiling confirmed — run next iteration with `--tuner scripts/calibration_tuner.json` to apply relaxed threshold and alternate token suggestions; accept 10/11 as baseline
-- [ ] Update `style/capture_guidelines.md` with multi-angle full-body capture protocol
-- [ ] Unit tests for EXIF stripper and landmark validator
-- [ ] CI: JSON schema validation on artifact output
-- [ ] Height calibration improvement — multi-angle or known-reference approach
+- [ ] Height calibration improvement — multi-angle or known-reference approach (capture_guidelines.md updated with protocol)
 
 ---
 
