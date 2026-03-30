@@ -3430,5 +3430,23 @@
       "facial_third_lower": 0.3784,
       "symmetry_index": 0.5814
     }
+  },
+  "enrichment": {
+    "hair_analysis": {
+      "color_name": "medium_brown",
+      "shade_descriptor": "warm medium brown",
+      "rgb_median": [
+        117,
+        84,
+        54
+      ],
+      "hsv_median": [
+        0.0794,
+        0.5385,
+        0.4588
+      ],
+      "sample_size": 467719,
+      "confidence": 0.706
+    }
   }
 }

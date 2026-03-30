@@ -3802,6 +3802,22 @@
         "gold trim on top",
         "snake-shaped earrings"
       ]
+    },
+    "hair_analysis": {
+      "color_name": "red_auburn",
+      "shade_descriptor": "deep auburn",
+      "rgb_median": [
+        148,
+        110,
+        96
+      ],
+      "hsv_median": [
+        0.0449,
+        0.3514,
+        0.5804
+      ],
+      "sample_size": 500796,
+      "confidence": 0.889
     }
   }
 }

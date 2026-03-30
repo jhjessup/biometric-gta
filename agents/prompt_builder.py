@@ -130,6 +130,18 @@ def _weighted_token(descriptor: str | None, weight: float) -> str | None:
     return f"({descriptor}:{weight})"
 
 
+def _hair_length_style_prefix(forensic: dict) -> str:
+    """Return 'long loose ' style prefix for use with Python-computed color."""
+    length = forensic.get("hair_length", "")
+    style  = forensic.get("hair_style", "")
+    parts  = []
+    if length and length not in ("unknown", "bald"):
+        parts.append(length)
+    if style and style not in ("unknown", "loose"):
+        parts.append(style)
+    return (" ".join(parts) + " ") if parts else ""
+
+
 def _hair_description(forensic: dict) -> str | None:
     color  = forensic.get("hair_color")
     length = forensic.get("hair_length")
@@ -205,8 +217,9 @@ def build_prompt(artifact: dict) -> dict:
             "slot_diagnostics": dict  # raw values used for each slot
         }
     """
-    forensic  = artifact.get("enrichment", {}).get("forensic", {})
-    sartorial = artifact.get("enrichment", {}).get("sartorial", {})
+    enrichment = artifact.get("enrichment", {})
+    forensic   = enrichment.get("forensic", {})
+    sartorial  = enrichment.get("sartorial", {})
     geo       = artifact.get("geometry", {}).get("measurements", {})
     body      = artifact.get("body_geometry", {}).get("measurements", {})
 
@@ -218,7 +231,12 @@ def build_prompt(artifact: dict) -> dict:
     age_phrase  = _age_gender_phrase(forensic)
     skin        = forensic.get("skin_tone", "")
     eye_color   = forensic.get("eye_color", "")
-    hair_desc   = _hair_description(forensic)
+    # Prefer Python-computed shade_descriptor (more precise than Gemini's coarse label)
+    hair_analysis = enrichment.get("hair_analysis", {})
+    if hair_analysis.get("shade_descriptor") and hair_analysis.get("confidence", 0) >= 0.60 and hair_analysis["shade_descriptor"] != "unknown":
+        hair_desc = _hair_length_style_prefix(forensic) + hair_analysis["shade_descriptor"] + " hair"
+    else:
+        hair_desc = _hair_description(forensic)
     eyewear     = forensic.get("eyewear", "none")
     expression  = forensic.get("expression", "neutral")
     features    = forensic.get("distinctive_features", [])

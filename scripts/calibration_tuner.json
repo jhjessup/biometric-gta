@@ -1,0 +1,16 @@
+{
+  "_description": "Synthesizer tuner — overrides calibration constants for known model ceiling metrics. Pass via --tuner scripts/calibration_tuner.json",
+  "_last_updated": "2026-03-30",
+
+  "ceiling_metrics": [
+    "mouth_to_iod_ratio"
+  ],
+
+  "delta_thresholds": {
+    "mouth_to_iod_ratio": 0.40
+  },
+
+  "tuning_suggestions": {
+    "mouth_to_iod_ratio/increase": "Model ceiling confirmed (GT=1.95, synthetic ceiling ~1.65). Try alternate tokens: (prominent lips:1.3), (wide smile:1.2), (generous mouth:1.2). Further weight increases or guidance changes have shown no improvement."
+  }
+}

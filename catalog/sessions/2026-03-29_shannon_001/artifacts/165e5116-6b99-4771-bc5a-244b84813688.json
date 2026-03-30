@@ -3420,6 +3420,22 @@
         "black belt",
         "embellished clutch"
       ]
+    },
+    "hair_analysis": {
+      "color_name": "dark_brown",
+      "shade_descriptor": "dark brown",
+      "rgb_median": [
+        71,
+        50,
+        70
+      ],
+      "hsv_median": [
+        0.8413,
+        0.2958,
+        0.2784
+      ],
+      "sample_size": 763723,
+      "confidence": 0.794
     }
   },
   "geometry": {

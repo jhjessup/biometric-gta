@@ -3803,6 +3803,22 @@
       "footwear": "sandals",
       "style_category": "bohemian",
       "notable_details": []
+    },
+    "hair_analysis": {
+      "color_name": "red_auburn",
+      "shade_descriptor": "deep auburn",
+      "rgb_median": [
+        137,
+        89,
+        79
+      ],
+      "hsv_median": [
+        0.0287,
+        0.4234,
+        0.5373
+      ],
+      "sample_size": 560915,
+      "confidence": 0.824
     }
   }
 }

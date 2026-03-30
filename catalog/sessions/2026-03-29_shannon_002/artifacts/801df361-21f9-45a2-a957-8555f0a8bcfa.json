@@ -3775,5 +3775,56 @@
       "hip_level_diff_cm": 0.1,
       "trunk_lean_deg": 2.79
     }
+  },
+  "enrichment": {
+    "forensic": {
+      "face_shape": "oval",
+      "skin_tone": "fair",
+      "eye_color": "unknown",
+      "hair_color": "blonde",
+      "hair_length": "medium",
+      "hair_style": "wavy",
+      "facial_hair": "none",
+      "estimated_age_range": "35-45",
+      "distinctive_features": [],
+      "eyewear": "none",
+      "expression": "smiling"
+    },
+    "sartorial": {
+      "top_garment": "dress",
+      "top_color": "magenta",
+      "top_pattern": "floral",
+      "bottom_garment": "dress",
+      "bottom_color": "magenta",
+      "outerwear": "none",
+      "accessories": [
+        "clutch bag",
+        "watch",
+        "necklace"
+      ],
+      "footwear": "none_visible",
+      "style_category": "formal",
+      "notable_details": [
+        "lace detail",
+        "embellished clutch",
+        "black belt detail"
+      ]
+    },
+    "hair_analysis": {
+      "color_name": "dark_brown",
+      "shade_descriptor": "dark brown",
+      "rgb_median": [
+        77,
+        54,
+        65
+      ],
+      "hsv_median": [
+        0.9203,
+        0.2987,
+        0.302
+      ],
+      "sample_size": 683361,
+      "confidence": 0.689
+    }
   }
 }

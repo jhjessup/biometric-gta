@@ -3767,5 +3767,55 @@
       "hip_level_diff_cm": null,
       "trunk_lean_deg": null
     }
+  },
+  "enrichment": {
+    "forensic": {
+      "face_shape": "round",
+      "skin_tone": "fair",
+      "eye_color": "brown",
+      "hair_color": "brown",
+      "hair_length": "medium",
+      "hair_style": "updo",
+      "facial_hair": "none",
+      "estimated_age_range": "40-50",
+      "distinctive_features": [
+        "wrinkles"
+      ],
+      "eyewear": "none",
+      "expression": "smiling"
+    },
+    "sartorial": {
+      "top_garment": "sweater",
+      "top_color": "purple",
+      "top_pattern": "solid",
+      "bottom_garment": "none_visible",
+      "bottom_color": "unknown",
+      "outerwear": "none",
+      "accessories": [
+        "earrings",
+        "ring"
+      ],
+      "footwear": "none_visible",
+      "style_category": "casual",
+      "notable_details": [
+        "fuzzy texture"
+      ]
+    },
+    "hair_analysis": {
+      "color_name": "red_auburn",
+      "shade_descriptor": "deep auburn",
+      "rgb_median": [
+        176,
+        125,
+        101
+      ],
+      "hsv_median": [
+        0.0533,
+        0.4261,
+        0.6902
+      ],
+      "sample_size": 182306,
+      "confidence": 0.754
+    }
   }
 }

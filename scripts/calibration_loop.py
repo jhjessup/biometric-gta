@@ -95,10 +95,40 @@ TUNING_SUGGESTIONS = {
 }
 
 
-def _compute_delta(ground_truth: dict, synthetic: dict) -> dict:
+def _load_tuner(tuner_path: Path | None) -> dict:
+    """
+    Load a synthesizer tuner config from JSON.
+
+    Tuner schema:
+      delta_thresholds  — per-key threshold overrides (float)
+      ceiling_metrics   — list of keys treated as model ceiling (relax suggestions)
+      tuning_suggestions — per-"key/direction" suggestion overrides (string)
+
+    Returns an empty dict if no tuner is provided.
+    """
+    if tuner_path is None:
+        return {}
+    raw = json.loads(tuner_path.read_text())
+    # Normalise tuning_suggestions keys from "key/direction" → (key, direction)
+    raw_suggestions = raw.get("tuning_suggestions", {})
+    raw["_tuning_suggestions_parsed"] = {
+        tuple(k.split("/", 1)): v for k, v in raw_suggestions.items()
+    }
+    return raw
+
+
+def _compute_delta(ground_truth: dict, synthetic: dict, tuner: dict | None = None) -> dict:
     """
     Compare geometry measurement dicts. Returns per-key delta analysis.
+
+    tuner — optional synthesizer tuner config (from _load_tuner); overrides
+             thresholds and suggestions for ceiling metrics.
     """
+    tuner = tuner or {}
+    threshold_overrides  = tuner.get("delta_thresholds", {})
+    ceiling_metrics      = set(tuner.get("ceiling_metrics", []))
+    suggestion_overrides = tuner.get("_tuning_suggestions_parsed", {})
+
     results = {}
     for key in CALIBRATION_KEYS:
         gt_val  = ground_truth.get(key)
@@ -107,15 +137,24 @@ def _compute_delta(ground_truth: dict, synthetic: dict) -> dict:
             results[key] = {"gt": gt_val, "synthetic": syn_val, "delta": None, "status": "missing"}
             continue
         delta     = syn_val - gt_val          # positive = synthetic > ground truth
-        threshold = DELTA_THRESHOLDS.get(key, 0.1)
+        threshold = threshold_overrides.get(key, DELTA_THRESHOLDS.get(key, 0.1))
+        is_ceiling = key in ceiling_metrics
         if abs(delta) <= threshold:
             status = "ok"
+        elif is_ceiling:
+            status = "ceiling"   # model cannot reach GT; no tuning suggestion will help
         elif delta > 0:
             status = "synthetic_high"
         else:
             status = "synthetic_low"
         direction = "decrease" if delta > 0 else "increase"
-        suggestion = TUNING_SUGGESTIONS.get((key, direction)) if status != "ok" else None
+        if status in ("synthetic_high", "synthetic_low"):
+            suggestion = suggestion_overrides.get((key, direction), TUNING_SUGGESTIONS.get((key, direction)))
+        elif status == "ceiling":
+            # Still surface the best known alternate token strategy
+            suggestion = suggestion_overrides.get((key, direction), TUNING_SUGGESTIONS.get((key, direction)))
+        else:
+            suggestion = None
         results[key] = {
             "gt":        round(float(gt_val),  4),
             "synthetic": round(float(syn_val), 4),
@@ -153,7 +192,11 @@ def run_calibration(
     seed: int | None = None,
     dry_run: bool = False,
     prior_tuning: dict | None = None,
-    generator_url: str = "https://perchance.org/ai-text-to-image-generator",
+    generator_url: str | None = None,
+    guidance_scale: float = 7.0,
+    tuner: dict | None = None,
+    reference_image_path: Path | None = None,
+    ip_adapter_scale: float = 0.8,
 ) -> dict:
     """
     Execute one calibration iteration.
@@ -178,7 +221,7 @@ def run_calibration(
 
     # Apply any tuning overrides from a prior run
     if prior_tuning:
-        overrides = prior_tuning.get("prompt_overrides", {})
+        overrides = prior_tuning
         if overrides.get("append_positive"):
             prompt_data["positive_prompt"] += ", " + overrides["append_positive"]
         if overrides.get("replace_tokens"):
@@ -200,8 +243,8 @@ def run_calibration(
         print("\n[dry-run] Skipping generation and measurement.")
         return {"run_id": run_id, "dry_run": True, "prompt_data": prompt_data}
 
-    # --- Generate via perchance ---
-    from scripts.perchance_driver import run_generation
+    # --- Generate via InstantID ---
+    from scripts.instantid_client import run_generation
     print(f"\nGenerating {batch_size} image(s)...")
     saved_images = run_generation(
         prompt_data,
@@ -210,6 +253,9 @@ def run_calibration(
         seed=seed,
         generator_url=generator_url,
         headless=True,
+        guidance_scale=guidance_scale,
+        reference_image_path=reference_image_path,
+        ip_adapter_scale=ip_adapter_scale,
     )
 
     if not saved_images:
@@ -244,7 +290,7 @@ def run_calibration(
         agg[key] = float(np.mean(vals)) if vals else None
 
     # --- Compute delta ---
-    delta = _compute_delta(gt_measurements, agg)
+    delta = _compute_delta(gt_measurements, agg, tuner=tuner)
 
     # --- Report ---
     print(f"\n{'='*60}")
@@ -255,9 +301,10 @@ def run_calibration(
     for key, r in delta.items():
         if r["delta"] is None:
             continue
-        status_marker = "✓" if r["status"] == "ok" else "✗"
-        print(f"{status_marker} {key:33s}  {r['gt']:8.3f}  {r['synthetic']:8.3f}  {r['delta']:+8.3f}  {r['status']}")
-        if r.get("suggestion"):
+        status_marker = "✓" if r["status"] in ("ok", "ceiling") else "✗"
+        ceiling_tag = " [ceiling]" if r["status"] == "ceiling" else ""
+        print(f"{status_marker} {key:33s}  {r['gt']:8.3f}  {r['synthetic']:8.3f}  {r['delta']:+8.3f}  {r['status']}{ceiling_tag}")
+        if r.get("suggestion") and r["status"] not in ("ok",):
             suggestions.append(f"  [{key}] {r['suggestion']}")
 
     if suggestions:
@@ -280,6 +327,10 @@ def run_calibration(
         "synthetic_mean":        agg,
         "delta":                 delta,
         "tuning_suggestions":    suggestions,
+        "synthesizer_tuner": {
+            "ceiling_metrics":     list(tuner.get("ceiling_metrics", [])) if tuner else [],
+            "threshold_overrides": tuner.get("delta_thresholds", {}) if tuner else {},
+        },
         "prompt_overrides": {
             "append_positive": "",
             "replace_tokens":  {},
@@ -304,15 +355,41 @@ def main():
     parser.add_argument("--batch",    type=int,   default=3,   help="Images to generate per run")
     parser.add_argument("--seed",     type=int,   default=None)
     parser.add_argument("--run-id",   type=str,   default=None)
-    parser.add_argument("--url",      type=str,   default="https://perchance.org/ai-text-to-image-generator")
+    parser.add_argument("--url",      type=str,   default=None,
+                        help="InstantID server URL (overrides INSTANTID_SERVER_URL env var)")
     parser.add_argument("--dry-run",  action="store_true", help="Build prompt only, no generation")
     parser.add_argument("--tune",     type=Path,  default=None,
                         help="Path to a prior calibration.json with prompt_overrides populated")
+    parser.add_argument("--guidance", type=float, default=7.0,
+                        help="Guidance scale 1–30 (default 7.0; try 9.5 for tighter prompt compliance)")
+    parser.add_argument("--tuner",     type=Path,  default=None,
+                        help="Path to synthesizer tuner JSON (overrides thresholds/suggestions for ceiling metrics)")
+    parser.add_argument("--reference", type=Path,  default=None,
+                        help="EXIF-stripped source image to use as InstantID face reference. "
+                             "If omitted, uses agents.reference_selector to auto-pick from the target session.")
+    parser.add_argument("--ip-scale",  type=float, default=0.8,
+                        help="InstantID identity strength 0.0–1.0 (default 0.8). "
+                             "Higher = stronger identity lock, less generative variation.")
     args = parser.parse_args()
 
     prior_tuning = None
     if args.tune:
         prior_tuning = json.loads(args.tune.read_text()).get("prompt_overrides")
+
+    tuner = _load_tuner(args.tuner) if args.tuner else None
+
+    # Auto-select reference image if not specified
+    reference_image_path = args.reference
+    if reference_image_path is None and not args.dry_run:
+        from agents.reference_selector import select_reference
+        session_dir = args.artifact.parent.parent
+        sel = select_reference(session_dir=session_dir)
+        print(f"Auto-selected reference: {sel['source_filename']}  (score={sel['score']:.1f})")
+        print("  Override with --reference <image_path> if this is wrong.")
+        # Reference selector returns source_filename; the stripped image must exist
+        # in the catalog stripped dir or the user must supply --reference explicitly.
+        # We store the selection but the client will raise clearly if the file is missing.
+        reference_image_path = session_dir / "stripped" / sel["source_filename"]
 
     run_calibration(
         target_artifact_path=args.artifact,
@@ -322,6 +399,10 @@ def main():
         dry_run=args.dry_run,
         prior_tuning=prior_tuning,
         generator_url=args.url,
+        guidance_scale=args.guidance,
+        tuner=tuner,
+        reference_image_path=reference_image_path,
+        ip_adapter_scale=args.ip_scale,
     )
 
 

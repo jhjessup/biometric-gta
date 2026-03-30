@@ -3799,6 +3799,22 @@
       "notable_details": [
         "eyelet fabric detail on top"
       ]
+    },
+    "hair_analysis": {
+      "color_name": "medium_brown",
+      "shade_descriptor": "warm medium brown",
+      "rgb_median": [
+        127,
+        106,
+        82
+      ],
+      "hsv_median": [
+        0.0889,
+        0.3543,
+        0.498
+      ],
+      "sample_size": 384294,
+      "confidence": 0.971
     }
   }
 }

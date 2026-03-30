@@ -3799,6 +3799,22 @@
       "notable_details": [
         "floral earrings"
       ]
+    },
+    "hair_analysis": {
+      "color_name": "dark_blonde",
+      "shade_descriptor": "dark blonde",
+      "rgb_median": [
+        161,
+        114,
+        73
+      ],
+      "hsv_median": [
+        0.0777,
+        0.5466,
+        0.6314
+      ],
+      "sample_size": 280716,
+      "confidence": 0.861
     }
   }
 }

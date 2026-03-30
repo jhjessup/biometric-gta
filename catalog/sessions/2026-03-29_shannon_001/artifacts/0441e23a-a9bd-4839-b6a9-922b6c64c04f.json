@@ -3411,6 +3411,22 @@
         "sequin detailing on dress",
         "embellished clutch bag"
       ]
+    },
+    "hair_analysis": {
+      "color_name": "light_blonde",
+      "shade_descriptor": "light golden blonde",
+      "rgb_median": [
+        194,
+        177,
+        157
+      ],
+      "hsv_median": [
+        0.0901,
+        0.1907,
+        0.7608
+      ],
+      "sample_size": 194873,
+      "confidence": 0.757
     }
   },
   "geometry": {

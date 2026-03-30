@@ -3412,6 +3412,22 @@
         "lace details",
         "traditional garment"
       ]
+    },
+    "hair_analysis": {
+      "color_name": "medium_brown",
+      "shade_descriptor": "warm medium brown",
+      "rgb_median": [
+        123,
+        110,
+        81
+      ],
+      "hsv_median": [
+        0.1151,
+        0.3415,
+        0.4824
+      ],
+      "sample_size": 411393,
+      "confidence": 0.795
     }
   },
   "geometry": {

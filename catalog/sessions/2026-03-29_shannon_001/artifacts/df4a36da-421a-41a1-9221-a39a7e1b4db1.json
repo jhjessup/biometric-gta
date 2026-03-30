@@ -3406,6 +3406,22 @@
       "footwear": "heels",
       "style_category": "smart_casual",
       "notable_details": []
+    },
+    "hair_analysis": {
+      "color_name": "light_brown",
+      "shade_descriptor": "light brown",
+      "rgb_median": [
+        141,
+        167,
+        181
+      ],
+      "hsv_median": [
+        0.5583,
+        0.221,
+        0.7098
+      ],
+      "sample_size": 157749,
+      "confidence": 0.957
     }
   },
   "geometry": {

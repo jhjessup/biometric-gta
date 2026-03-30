@@ -3407,6 +3407,22 @@
       "notable_details": [
         "heart-shaped earrings"
       ]
+    },
+    "hair_analysis": {
+      "color_name": "dark_blonde",
+      "shade_descriptor": "dark blonde",
+      "rgb_median": [
+        144,
+        122,
+        96
+      ],
+      "hsv_median": [
+        0.0903,
+        0.3333,
+        0.5647
+      ],
+      "sample_size": 477038,
+      "confidence": 0.924
     }
   },
   "geometry": {

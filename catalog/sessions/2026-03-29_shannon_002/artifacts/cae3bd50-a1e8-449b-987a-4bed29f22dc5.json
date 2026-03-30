@@ -3767,5 +3767,23 @@
       "hip_level_diff_cm": 0.4,
       "trunk_lean_deg": -1.23
     }
+  },
+  "enrichment": {
+    "hair_analysis": {
+      "color_name": "light_brown",
+      "shade_descriptor": "warm light brown",
+      "rgb_median": [
+        134,
+        116,
+        99
+      ],
+      "hsv_median": [
+        0.081,
+        0.2612,
+        0.5255
+      ],
+      "sample_size": 195810,
+      "confidence": 0.962
+    }
   }
 }

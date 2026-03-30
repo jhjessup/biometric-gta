@@ -3767,5 +3767,52 @@
       "hip_level_diff_cm": 8.8,
       "trunk_lean_deg": 133.06
     }
+  },
+  "enrichment": {
+    "forensic": {
+      "face_shape": "oval",
+      "skin_tone": "light",
+      "eye_color": "brown",
+      "hair_color": "brown",
+      "hair_length": "long",
+      "hair_style": "wavy",
+      "facial_hair": "none",
+      "estimated_age_range": "25-35",
+      "distinctive_features": [],
+      "eyewear": "none",
+      "expression": "smiling"
+    },
+    "sartorial": {
+      "top_garment": "t-shirt",
+      "top_color": "gray",
+      "top_pattern": "solid",
+      "bottom_garment": "jeans",
+      "bottom_color": "light blue",
+      "outerwear": "none",
+      "accessories": [
+        "watch"
+      ],
+      "footwear": "sneakers",
+      "style_category": "casual",
+      "notable_details": [
+        "distressed jeans"
+      ]
+    },
+    "hair_analysis": {
+      "color_name": "red_auburn",
+      "shade_descriptor": "deep auburn",
+      "rgb_median": [
+        162,
+        109,
+        82
+      ],
+      "hsv_median": [
+        0.0562,
+        0.4938,
+        0.6353
+      ],
+      "sample_size": 370302,
+      "confidence": 0.835
+    }
   }
 }

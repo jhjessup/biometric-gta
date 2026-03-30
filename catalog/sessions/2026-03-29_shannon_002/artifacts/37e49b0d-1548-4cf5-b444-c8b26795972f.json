@@ -3807,6 +3807,22 @@
       "notable_details": [
         "patterned shorts"
       ]
+    },
+    "hair_analysis": {
+      "color_name": "light_brown",
+      "shade_descriptor": "light brown",
+      "rgb_median": [
+        142,
+        211,
+        163
+      ],
+      "hsv_median": [
+        0.3841,
+        0.327,
+        0.8275
+      ],
+      "sample_size": 655462,
+      "confidence": 0.646
     }
   }
 }

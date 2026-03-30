@@ -3767,5 +3767,57 @@
       "hip_level_diff_cm": 12.4,
       "trunk_lean_deg": 59.82
     }
+  },
+  "enrichment": {
+    "forensic": {
+      "face_shape": "oval",
+      "skin_tone": "medium",
+      "eye_color": "brown",
+      "hair_color": "brown",
+      "hair_length": "long",
+      "hair_style": "updo",
+      "facial_hair": "none",
+      "estimated_age_range": "35-45",
+      "distinctive_features": [
+        "freckles"
+      ],
+      "eyewear": "none",
+      "expression": "smiling"
+    },
+    "sartorial": {
+      "top_garment": "top",
+      "top_color": "pink",
+      "top_pattern": "solid",
+      "bottom_garment": "shorts",
+      "bottom_color": "black",
+      "outerwear": "none",
+      "accessories": [
+        "headband",
+        "earrings",
+        "decorative sash"
+      ],
+      "footwear": "none_visible",
+      "style_category": "athletic",
+      "notable_details": [
+        "sparkly headband",
+        "gold embellished hip scarf"
+      ]
+    },
+    "hair_analysis": {
+      "color_name": "light_blonde",
+      "shade_descriptor": "light golden blonde",
+      "rgb_median": [
+        216,
+        167,
+        131
+      ],
+      "hsv_median": [
+        0.0706,
+        0.3935,
+        0.8471
+      ],
+      "sample_size": 389256,
+      "confidence": 0.785
+    }
   }
 }

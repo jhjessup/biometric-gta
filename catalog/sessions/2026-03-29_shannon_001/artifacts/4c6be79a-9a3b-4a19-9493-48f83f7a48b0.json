@@ -3416,6 +3416,22 @@
         "embroidered neckline",
         "intricate floral pattern"
       ]
+    },
+    "hair_analysis": {
+      "color_name": "red_auburn",
+      "shade_descriptor": "deep auburn",
+      "rgb_median": [
+        143,
+        87,
+        76
+      ],
+      "hsv_median": [
+        0.0274,
+        0.4685,
+        0.5608
+      ],
+      "sample_size": 608869,
+      "confidence": 0.65
     }
   },
   "geometry": {

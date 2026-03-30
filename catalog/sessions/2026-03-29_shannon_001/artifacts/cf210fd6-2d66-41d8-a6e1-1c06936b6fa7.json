@@ -3415,6 +3415,22 @@
       "footwear": "none_visible",
       "style_category": "casual",
       "notable_details": []
+    },
+    "hair_analysis": {
+      "color_name": "light_brown",
+      "shade_descriptor": "light brown",
+      "rgb_median": [
+        109,
+        176,
+        235
+      ],
+      "hsv_median": [
+        0.578,
+        0.5362,
+        0.9216
+      ],
+      "sample_size": 702124,
+      "confidence": 0.987
     }
   },
   "geometry": {

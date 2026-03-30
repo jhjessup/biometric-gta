@@ -3407,6 +3407,22 @@
       "notable_details": [
         "flower-shaped earrings"
       ]
+    },
+    "hair_analysis": {
+      "color_name": "dark_blonde",
+      "shade_descriptor": "dark blonde",
+      "rgb_median": [
+        160,
+        114,
+        73
+      ],
+      "hsv_median": [
+        0.0785,
+        0.5438,
+        0.6275
+      ],
+      "sample_size": 281690,
+      "confidence": 0.861
     }
   },
   "geometry": {

@@ -3413,6 +3413,22 @@
       "footwear": "sandals",
       "style_category": "casual",
       "notable_details": []
+    },
+    "hair_analysis": {
+      "color_name": "dark_blonde",
+      "shade_descriptor": "dark blonde",
+      "rgb_median": [
+        154,
+        143,
+        113
+      ],
+      "hsv_median": [
+        0.122,
+        0.2662,
+        0.6039
+      ],
+      "sample_size": 678200,
+      "confidence": 0.939
     }
   },
   "geometry": {

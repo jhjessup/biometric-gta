@@ -3405,6 +3405,22 @@
       "notable_details": [
         "ruffled sleeves"
       ]
+    },
+    "hair_analysis": {
+      "color_name": "light_brown",
+      "shade_descriptor": "warm light brown",
+      "rgb_median": [
+        133,
+        116,
+        98
+      ],
+      "hsv_median": [
+        0.0857,
+        0.2632,
+        0.5216
+      ],
+      "sample_size": 192122,
+      "confidence": 0.962
     }
   },
   "geometry": {

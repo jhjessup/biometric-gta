@@ -3775,5 +3775,52 @@
       "hip_level_diff_cm": 0.2,
       "trunk_lean_deg": -0.48
     }
+  },
+  "enrichment": {
+    "forensic": {
+      "face_shape": "oval",
+      "skin_tone": "fair",
+      "eye_color": "brown",
+      "hair_color": "brown",
+      "hair_length": "medium",
+      "hair_style": "wavy",
+      "facial_hair": "none",
+      "estimated_age_range": "40-50",
+      "distinctive_features": [],
+      "eyewear": "none",
+      "expression": "smiling"
+    },
+    "sartorial": {
+      "top_garment": "top",
+      "top_color": "black",
+      "top_pattern": "solid",
+      "bottom_garment": "trousers",
+      "bottom_color": "black",
+      "outerwear": "jacket",
+      "accessories": [
+        "earrings"
+      ],
+      "footwear": "boots",
+      "style_category": "smart_casual",
+      "notable_details": [
+        "gold zippers on jacket"
+      ]
+    },
+    "hair_analysis": {
+      "color_name": "red_auburn",
+      "shade_descriptor": "deep auburn",
+      "rgb_median": [
+        111,
+        76,
+        58
+      ],
+      "hsv_median": [
+        0.0566,
+        0.4775,
+        0.4353
+      ],
+      "sample_size": 470353,
+      "confidence": 0.957
+    }
   }
 }

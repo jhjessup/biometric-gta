@@ -3767,5 +3767,52 @@
       "hip_level_diff_cm": null,
       "trunk_lean_deg": null
     }
+  },
+  "enrichment": {
+    "forensic": {
+      "face_shape": "oval",
+      "skin_tone": "light",
+      "eye_color": "hazel",
+      "hair_color": "blonde",
+      "hair_length": "long",
+      "hair_style": "wavy",
+      "facial_hair": "none",
+      "estimated_age_range": "30-40",
+      "distinctive_features": [],
+      "eyewear": "none",
+      "expression": "smiling"
+    },
+    "sartorial": {
+      "top_garment": "t-shirt",
+      "top_color": "dark_gray",
+      "top_pattern": "graphic",
+      "bottom_garment": "none_visible",
+      "bottom_color": "unknown",
+      "outerwear": "none",
+      "accessories": [
+        "earrings"
+      ],
+      "footwear": "none_visible",
+      "style_category": "casual",
+      "notable_details": [
+        "Good Vibes graphic"
+      ]
+    },
+    "hair_analysis": {
+      "color_name": "dark_blonde",
+      "shade_descriptor": "dark blonde",
+      "rgb_median": [
+        143,
+        108,
+        87
+      ],
+      "hsv_median": [
+        0.0625,
+        0.3916,
+        0.5608
+      ],
+      "sample_size": 440695,
+      "confidence": 0.833
+    }
   }
 }

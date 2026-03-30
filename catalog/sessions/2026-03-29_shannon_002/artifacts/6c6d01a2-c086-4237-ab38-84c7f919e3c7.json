@@ -3795,6 +3795,22 @@
       "footwear": "none_visible",
       "style_category": "casual",
       "notable_details": []
+    },
+    "hair_analysis": {
+      "color_name": "dark_blonde",
+      "shade_descriptor": "dark blonde",
+      "rgb_median": [
+        150,
+        141,
+        119
+      ],
+      "hsv_median": [
+        0.1183,
+        0.2067,
+        0.5882
+      ],
+      "sample_size": 254232,
+      "confidence": 0.778
     }
   }
 }

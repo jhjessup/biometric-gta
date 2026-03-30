@@ -3405,6 +3405,22 @@
       "notable_details": [
         "ruffled sleeves"
       ]
+    },
+    "hair_analysis": {
+      "color_name": "dark_blonde",
+      "shade_descriptor": "dark blonde",
+      "rgb_median": [
+        180,
+        154,
+        135
+      ],
+      "hsv_median": [
+        0.0704,
+        0.25,
+        0.7059
+      ],
+      "sample_size": 376330,
+      "confidence": 0.989
     }
   },
   "geometry": {

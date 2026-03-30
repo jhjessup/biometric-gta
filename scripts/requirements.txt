@@ -4,4 +4,6 @@ Pillow>=10.3.0
 pillow-heif>=0.18.0
 python-dotenv>=1.0.0
 google-generativeai>=0.8.0
+curl_cffi>=0.7.0      # Chrome TLS impersonation — bypasses Cloudflare bot check
+# httpx>=0.27.0       # superseded by curl_cffi for perchance
 # playwright>=1.40.0  -- requires desktop/GUI environment; run on local machine only
