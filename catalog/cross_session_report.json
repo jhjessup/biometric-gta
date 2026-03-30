@@ -1,0 +1,395 @@
+{
+  "generated_at": "2026-03-30T02:43:43.337134+00:00",
+  "sessions_analyzed": [
+    "2026-03-29_shannon_001",
+    "2026-03-29_shannon_002"
+  ],
+  "total_artifacts": 45,
+  "feature_keys": [
+    "eye_left_aspect_ratio",
+    "eye_right_aspect_ratio",
+    "eye_width_symmetry",
+    "eye_height_symmetry",
+    "canthal_index",
+    "nose_width_norm",
+    "nose_length_norm",
+    "nasal_index",
+    "mouth_to_iod_ratio",
+    "lip_ratio",
+    "facial_index",
+    "jaw_to_cheek_ratio",
+    "facial_third_mid",
+    "facial_third_lower"
+  ],
+  "cluster_threshold": 0.868,
+  "primary_cluster": {
+    "size": 38,
+    "pairwise_mean": 0.6607,
+    "pairwise_std": 0.2205,
+    "pairwise_max": 1.3311,
+    "members": [
+      {
+        "artifact_id": "0441e23a-a9bd-4839-b6a9-922b6c64c04f",
+        "session_id": "2026-03-29_shannon_001",
+        "source_file": "IMG_0960.HEIC",
+        "quality_flags": []
+      },
+      {
+        "artifact_id": "165e5116-6b99-4771-bc5a-244b84813688",
+        "session_id": "2026-03-29_shannon_001",
+        "source_file": "IMG_4222.HEIC",
+        "quality_flags": [
+          "face_crop_used"
+        ]
+      },
+      {
+        "artifact_id": "2973fada-8f43-4d9e-905e-72eb0be5f2e1",
+        "session_id": "2026-03-29_shannon_001",
+        "source_file": "IMG_9783.HEIC",
+        "quality_flags": []
+      },
+      {
+        "artifact_id": "4c6be79a-9a3b-4a19-9493-48f83f7a48b0",
+        "session_id": "2026-03-29_shannon_001",
+        "source_file": "IMG_5130.HEIC",
+        "quality_flags": [
+          "face_crop_used",
+          "multiple_faces_detected"
+        ]
+      },
+      {
+        "artifact_id": "539144fb-7a3e-4392-b810-6de869005408",
+        "session_id": "2026-03-29_shannon_001",
+        "source_file": "IMG_5140.HEIC",
+        "quality_flags": []
+      },
+      {
+        "artifact_id": "68d8ca9b-6ee7-41e2-ba5b-a0c66958d183",
+        "session_id": "2026-03-29_shannon_001",
+        "source_file": "IMG_5478.HEIC",
+        "quality_flags": []
+      },
+      {
+        "artifact_id": "ac860632-f286-409d-9197-0ddb7f5e5196",
+        "session_id": "2026-03-29_shannon_001",
+        "source_file": "IMG_3800.HEIC",
+        "quality_flags": [
+          "face_crop_used",
+          "multiple_faces_detected"
+        ]
+      },
+      {
+        "artifact_id": "bed0b859-5c13-4417-a60d-8ea328c5520a",
+        "session_id": "2026-03-29_shannon_001",
+        "source_file": "IMG_5476.HEIC",
+        "quality_flags": [
+          "face_crop_used",
+          "multiple_faces_detected"
+        ]
+      },
+      {
+        "artifact_id": "cf210fd6-2d66-41d8-a6e1-1c06936b6fa7",
+        "session_id": "2026-03-29_shannon_001",
+        "source_file": "IMG_2795.JPG",
+        "quality_flags": [
+          "face_crop_used"
+        ]
+      },
+      {
+        "artifact_id": "dcffbd31-db7d-41bf-b8e1-57cb7a323eea",
+        "session_id": "2026-03-29_shannon_001",
+        "source_file": "IMG_4216.HEIC",
+        "quality_flags": []
+      },
+      {
+        "artifact_id": "df4a36da-421a-41a1-9221-a39a7e1b4db1",
+        "session_id": "2026-03-29_shannon_001",
+        "source_file": "IMG_3929.HEIC",
+        "quality_flags": []
+      },
+      {
+        "artifact_id": "e443b2ed-81e6-4c53-9620-7c26c3bb7c6a",
+        "session_id": "2026-03-29_shannon_001",
+        "source_file": "IMG_5203.HEIC",
+        "quality_flags": [
+          "face_crop_used",
+          "multiple_faces_detected"
+        ]
+      },
+      {
+        "artifact_id": "ef103149-c3fd-43a3-ae41-2e0a55c1f492",
+        "session_id": "2026-03-29_shannon_001",
+        "source_file": "IMG_2809.JPG",
+        "quality_flags": [
+          "subject_mismatch_suspected"
+        ]
+      },
+      {
+        "artifact_id": "02654993-e5c3-4e7a-8f1c-3e247dde0714",
+        "session_id": "2026-03-29_shannon_002",
+        "source_file": "IMG_3800.HEIC",
+        "quality_flags": [
+          "face_crop_used",
+          "multiple_faces_detected"
+        ]
+      },
+      {
+        "artifact_id": "08b3128d-0c2a-4103-81c8-14f16e810960",
+        "session_id": "2026-03-29_shannon_002",
+        "source_file": "IMG_8724.JPEG",
+        "quality_flags": []
+      },
+      {
+        "artifact_id": "30b932be-ade4-4b34-8c11-3978d72ff66d",
+        "session_id": "2026-03-29_shannon_002",
+        "source_file": "IMG_5478.HEIC",
+        "quality_flags": []
+      },
+      {
+        "artifact_id": "37526227-bf1f-4293-83ff-bb859c25901e",
+        "session_id": "2026-03-29_shannon_002",
+        "source_file": "IMG_5130.HEIC",
+        "quality_flags": [
+          "face_crop_used",
+          "multiple_faces_detected"
+        ]
+      },
+      {
+        "artifact_id": "37e49b0d-1548-4cf5-b444-c8b26795972f",
+        "session_id": "2026-03-29_shannon_002",
+        "source_file": "IMG_5203.HEIC",
+        "quality_flags": [
+          "face_crop_used",
+          "multiple_faces_detected"
+        ]
+      },
+      {
+        "artifact_id": "4822df36-e183-47ba-ad0d-f0eb33229242",
+        "session_id": "2026-03-29_shannon_002",
+        "source_file": "IMG_4217.HEIC",
+        "quality_flags": []
+      },
+      {
+        "artifact_id": "6345b23c-8a97-410d-a973-54489418b031",
+        "session_id": "2026-03-29_shannon_002",
+        "source_file": "IMG_5840.JPEG",
+        "quality_flags": []
+      },
+      {
+        "artifact_id": "6c6d01a2-c086-4237-ab38-84c7f919e3c7",
+        "session_id": "2026-03-29_shannon_002",
+        "source_file": "IMG_5216.HEIC",
+        "quality_flags": []
+      },
+      {
+        "artifact_id": "705bac62-bac7-4986-b8a7-581968882f39",
+        "session_id": "2026-03-29_shannon_002",
+        "source_file": "IMG_4403.HEIC",
+        "quality_flags": []
+      },
+      {
+        "artifact_id": "718f3c32-c0e5-4aae-82a7-ddbcfc60bef6",
+        "session_id": "2026-03-29_shannon_002",
+        "source_file": "IMG_4628.JPEG",
+        "quality_flags": []
+      },
+      {
+        "artifact_id": "72bd0a29-7a6d-423d-8714-f5e2e469f33b",
+        "session_id": "2026-03-29_shannon_002",
+        "source_file": "IMG_3850.HEIC",
+        "quality_flags": []
+      },
+      {
+        "artifact_id": "74df642e-21fb-411a-87a8-c31007ab3fc8",
+        "session_id": "2026-03-29_shannon_002",
+        "source_file": "IMG_2809.JPG",
+        "quality_flags": []
+      },
+      {
+        "artifact_id": "801df361-21f9-45a2-a957-8555f0a8bcfa",
+        "session_id": "2026-03-29_shannon_002",
+        "source_file": "IMG_4222.HEIC",
+        "quality_flags": [
+          "face_crop_used",
+          "multiple_faces_detected"
+        ]
+      },
+      {
+        "artifact_id": "868c3ba5-a6a8-411e-9476-936ccced9761",
+        "session_id": "2026-03-29_shannon_002",
+        "source_file": "IMG_0960.HEIC",
+        "quality_flags": []
+      },
+      {
+        "artifact_id": "87b3aaaf-8002-4d43-ba1d-cd7f5d181ef4",
+        "session_id": "2026-03-29_shannon_002",
+        "source_file": "IMG_7551.HEIC",
+        "quality_flags": [
+          "face_crop_used",
+          "multiple_faces_detected"
+        ]
+      },
+      {
+        "artifact_id": "91baaa03-e5a5-464f-95a8-782ee78fa24d",
+        "session_id": "2026-03-29_shannon_002",
+        "source_file": "IMG_3929.HEIC",
+        "quality_flags": []
+      },
+      {
+        "artifact_id": "9856fe47-8885-45ed-9847-7f84ca0b9d01",
+        "session_id": "2026-03-29_shannon_002",
+        "source_file": "IMG_3779.HEIC",
+        "quality_flags": []
+      },
+      {
+        "artifact_id": "a847e14f-74c5-4e74-881e-7c75d7143564",
+        "session_id": "2026-03-29_shannon_002",
+        "source_file": "IMG_9783.HEIC",
+        "quality_flags": []
+      },
+      {
+        "artifact_id": "ba574c18-4ee8-4ac3-99df-ad05fb4bf750",
+        "session_id": "2026-03-29_shannon_002",
+        "source_file": "IMG_4216.HEIC",
+        "quality_flags": []
+      },
+      {
+        "artifact_id": "bbe3f139-cd52-4c21-9110-45fbac1fd890",
+        "session_id": "2026-03-29_shannon_002",
+        "source_file": "IMG_4279.JPEG",
+        "quality_flags": []
+      },
+      {
+        "artifact_id": "cae3bd50-a1e8-449b-987a-4bed29f22dc5",
+        "session_id": "2026-03-29_shannon_002",
+        "source_file": "IMG_5140.HEIC",
+        "quality_flags": []
+      },
+      {
+        "artifact_id": "cf3a8e4f-ae4f-4b0b-9998-577daab1f40a",
+        "session_id": "2026-03-29_shannon_002",
+        "source_file": "lp_image(1).HEIC",
+        "quality_flags": []
+      },
+      {
+        "artifact_id": "db2f0d16-7003-4e5e-b7d3-baf9c75d3a54",
+        "session_id": "2026-03-29_shannon_002",
+        "source_file": "IMG_5476.HEIC",
+        "quality_flags": [
+          "face_crop_used",
+          "multiple_faces_detected"
+        ]
+      },
+      {
+        "artifact_id": "e1c3624c-e5b9-478c-9097-daa3fe585da3",
+        "session_id": "2026-03-29_shannon_002",
+        "source_file": "IMG_3326.JPEG",
+        "quality_flags": []
+      },
+      {
+        "artifact_id": "fd547444-d789-4c30-b8cb-b7c2140ffcc0",
+        "session_id": "2026-03-29_shannon_002",
+        "source_file": "IMG_2795.JPG",
+        "quality_flags": [
+          "face_crop_used",
+          "multiple_faces_detected"
+        ]
+      }
+    ]
+  },
+  "outliers": [
+    {
+      "artifact_id": "f7394775-cb61-4a48-ac3d-ef2ad3d46003",
+      "session_id": "2026-03-29_shannon_001",
+      "source_file": "IMG_4720.HEIC",
+      "quality_flags": [],
+      "min_dist_to_cluster": 0.5941
+    },
+    {
+      "artifact_id": "398ceab4-ff38-46e0-b49e-9ef8d19b8970",
+      "session_id": "2026-03-29_shannon_002",
+      "source_file": "IMG_7584.JPEG",
+      "quality_flags": [],
+      "min_dist_to_cluster": 0.7919
+    },
+    {
+      "artifact_id": "446e3813-7c3d-447d-adc1-872face3ee3e",
+      "session_id": "2026-03-29_shannon_002",
+      "source_file": "lp_image.HEIC",
+      "quality_flags": [],
+      "min_dist_to_cluster": 2.2602
+    },
+    {
+      "artifact_id": "76af9525-a6a3-49ac-87cf-443319c562c6",
+      "session_id": "2026-03-29_shannon_002",
+      "source_file": "IMG_4720.HEIC",
+      "quality_flags": [],
+      "min_dist_to_cluster": 0.5851
+    },
+    {
+      "artifact_id": "7efe966a-8817-4768-8854-eea8a6eb752f",
+      "session_id": "2026-03-29_shannon_002",
+      "source_file": "lp_image(2).HEIC",
+      "quality_flags": [],
+      "min_dist_to_cluster": 1.291
+    },
+    {
+      "artifact_id": "da3e3381-6428-49db-b011-7df778edc535",
+      "session_id": "2026-03-29_shannon_002",
+      "source_file": "IMG_4866.HEIC",
+      "quality_flags": [],
+      "min_dist_to_cluster": 0.9277
+    },
+    {
+      "artifact_id": "fc8a889c-48a0-43c3-bce4-f92686107d60",
+      "session_id": "2026-03-29_shannon_002",
+      "source_file": "IMG_7757.JPEG",
+      "quality_flags": [],
+      "min_dist_to_cluster": 0.6144
+    }
+  ],
+  "body_geometry_summary": {
+    "height_cm": {
+      "n": 2,
+      "mean": 145.8,
+      "std": 19.6,
+      "min": 126.2,
+      "max": 165.5
+    },
+    "shoulder_width_cm": {
+      "n": 19,
+      "mean": 43.9,
+      "std": 7.4,
+      "min": 26.2,
+      "max": 57.3
+    },
+    "hip_width_cm": {
+      "n": 9,
+      "mean": 19.7,
+      "std": 6.4,
+      "min": 11.0,
+      "max": 29.1
+    }
+  },
+  "new_images_in_cluster": [
+    "IMG_8724.JPEG",
+    "IMG_4217.HEIC",
+    "IMG_5840.JPEG",
+    "IMG_5216.HEIC",
+    "IMG_4403.HEIC",
+    "IMG_4628.JPEG",
+    "IMG_3850.HEIC",
+    "IMG_7551.HEIC",
+    "IMG_3779.HEIC",
+    "IMG_4279.JPEG",
+    "lp_image(1).HEIC",
+    "IMG_3326.JPEG"
+  ],
+  "notes": {
+    "IMG_2809.JPG": "Previously flagged as subject_mismatch_suspected in session 001 based on a pose-position descriptor (nose y-coordinate). Face geometry is identical across both sessions (delta <0.02 on all 14 feature keys) and is geometrically consistent with the primary cluster. Recommend re-evaluating the mismatch flag against visual QA \u2014 may be a false positive.",
+    "lp_image.HEIC": "Extreme outlier (min_dist=2.26). facial_index=291, symmetry=5.43, eye_width_symmetry=3.93 indicate a non-frontal capture (profile or heavily angled). Not a valid frontal biometric artifact.",
+    "lp_image(2).HEIC": "Strong outlier (min_dist=1.29). facial_index=142, symmetry=2.47 \u2014 non-frontal or angled capture. Measurements not representative of a frontal biometric profile.",
+    "IMG_4866.HEIC": "Borderline outlier (min_dist=0.93). Reasonable symmetry (0.26) but nasal_index=113 and canthal_index=0.38 diverge from cluster means. Possibly a different subject.",
+    "IMG_4720.HEIC": "Borderline outlier in cross-session analysis (min_dist=0.59) despite being in session 001 cluster. Measurements are consistent between sessions. Likely a population-shift effect with 45 vs 14 artifacts \u2014 low priority for review."
+  }
+}

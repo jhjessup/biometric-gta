@@ -91,10 +91,29 @@
 
 ---
 
+### 2026-03-29 — Cross-Session Consistency Analysis
+
+- [x] `scripts/cross_session_analysis.py` — pools all sessions, 14-feature geometry descriptor, pairwise distance matrix, auto-threshold clustering, body geometry summary
+- [x] `catalog/cross_session_report.json` — analysis across 45 artifacts (sessions 001 + 002)
+
+**Findings:**
+- **38/45 artifacts** form a consistent primary cluster (pairwise mean=0.661, max=1.331)
+- **12 new images** from session 002 confirmed in cluster
+- **`IMG_2809.JPG` re-evaluated** — face geometry is identical across both sessions (delta <0.02); session 001 mismatch flag was based on pose position, not face geometry. Recommend visual QA to resolve.
+- **True outliers (7):**
+  - `lp_image.HEIC` (dist=2.26) — non-frontal/profile image, invalid biometric artifact
+  - `lp_image(2).HEIC` (dist=1.29) — non-frontal, same
+  - `IMG_4866.HEIC` (dist=0.93) — possibly different subject (divergent nasal + canthal index)
+  - `IMG_4720.HEIC` (dist=0.59, both sessions) — borderline; consistent geometry, likely population-shift effect
+  - `IMG_7584.JPEG`, `IMG_7757.JPEG` — borderline outliers for further review
+- **Body geometry (primary cluster):** shoulder width mean=43.9cm ±7.4; height estimable from 2 full-body shots (126–165 cm)
+
+---
+
 ## In Progress
 
 - [ ] Gemini enrichment — 21 artifacts in session 002 pending (daily quota reset required)
-- [ ] Manual QA review — visually confirm `IMG_2809.JPG` mismatch, set `approved: true` on 13-image cluster
+- [ ] Manual QA review — resolve `IMG_2809.JPG` mismatch flag; confirm `lp_image` files as non-frontal; set `approved: true` on primary cluster
 - [ ] Re-strip all 16 images with ICC-profile-removing `exif_stripper.py` and update artifact `source.image_hash` values
 
 ---
