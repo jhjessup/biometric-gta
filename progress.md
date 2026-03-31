@@ -285,3 +285,13 @@ python -m scripts.calibration_loop \
 - Raw biometric data lives outside the repo; paths configured via `.env`.
 - `data/catalog.db` is gitignored — rebuild anytime with `python -m scripts.rebuild_index`.
 - Detection pipeline is two-tier: full-image multi-scale first, Haar crop fallback second.
+
+---
+
+### Auto-Loop Summary (2026-03-31)
+
+- Total runs: 758
+- Best score: 9/11  (run `922aba03`)
+- Channels tested: ai-text-to-image-generator, ai-portrait-generator, realistic-ai-image-generator, ai-photo-generator, ai-art-generator, photorealistic-ai-image-generator, ai-image-generator, text-to-image-generator, stable-diffusion-image-generator, ai-realistic-image-generator
+- GT artifacts rotated: 4 times
+- Duration: 6.0h
