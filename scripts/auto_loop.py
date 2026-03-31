@@ -58,15 +58,17 @@ GT_ARTIFACTS = [
 # First entry is known-good baseline; rest are candidates to probe
 CANDIDATE_CHANNELS = [
     "ai-text-to-image-generator",       # baseline: 10/11 @ guidance 7.0
-    "ai-portrait-generator",
+    "ai-portrait-generator",            # worker-confirmed
+    "realistic-portrait-generator",     # worker-confirmed
+    "photorealistic-ai-generator",      # worker-confirmed
+    "ai-realistic-image-generator",     # worker-confirmed
+    "portrait-ai-generator",            # worker-confirmed
+    "realistic-photo-generator",        # worker-confirmed
+    "photo-realistic-portrait-ai",      # worker-confirmed
+    "photorealistic-ai-image-generator",
     "realistic-ai-image-generator",
     "ai-photo-generator",
     "ai-art-generator",
-    "photorealistic-ai-image-generator",
-    "ai-image-generator",
-    "text-to-image-generator",
-    "stable-diffusion-image-generator",
-    "ai-realistic-image-generator",
 ]
 
 GUIDANCE = 7.0
