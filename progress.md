@@ -295,3 +295,13 @@ python -m scripts.calibration_loop \
 - Channels tested: ai-text-to-image-generator, ai-portrait-generator, realistic-ai-image-generator, ai-photo-generator, ai-art-generator, photorealistic-ai-image-generator, ai-image-generator, text-to-image-generator, stable-diffusion-image-generator, ai-realistic-image-generator
 - GT artifacts rotated: 4 times
 - Duration: 6.0h
+
+---
+
+### Auto-Loop Summary (2026-03-31)
+
+- Total runs: 0
+- Best score: 0/11  (run `None`)
+- Channels tested: ai-text-to-image-generator
+- GT artifacts rotated: 0 times
+- Duration: 0.001h
