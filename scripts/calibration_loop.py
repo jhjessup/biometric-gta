@@ -197,6 +197,10 @@ def run_calibration(
     tuner: dict | None = None,
     reference_image_path: Path | None = None,
     ip_adapter_scale: float = 0.8,
+    model: str = "qwen/qwen3.6-plus-preview",
+    resolution: str = "512x768",
+    generation_fn=None,
+    full_body: bool = False,
 ) -> dict:
     """
     Execute one calibration iteration.
@@ -217,7 +221,7 @@ def run_calibration(
     print(f"Artifact ID:     {target['artifact_id']}")
 
     # --- Build prompt ---
-    prompt_data = build_prompt(target)
+    prompt_data = build_prompt(target, full_body=full_body)
 
     # Apply any tuning overrides from a prior run
     if prior_tuning:
@@ -243,10 +247,11 @@ def run_calibration(
         print("\n[dry-run] Skipping generation and measurement.")
         return {"run_id": run_id, "dry_run": True, "prompt_data": prompt_data}
 
-    # --- Generate via InstantID ---
-    from scripts.instantid_client import run_generation
+    # --- Generate via backend ---
+    if generation_fn is None:
+        raise RuntimeError("generation_fn not provided to run_calibration(). Pass via main() backend selection.")
     print(f"\nGenerating {batch_size} image(s)...")
-    saved_images = run_generation(
+    saved_images = generation_fn(
         prompt_data,
         out_dir=out_dir,
         batch_size=batch_size,
@@ -256,6 +261,8 @@ def run_calibration(
         guidance_scale=guidance_scale,
         reference_image_path=reference_image_path,
         ip_adapter_scale=ip_adapter_scale,
+        model=model,
+        resolution=resolution,
     )
 
     if not saved_images:
@@ -370,7 +377,22 @@ def main():
     parser.add_argument("--ip-scale",  type=float, default=0.8,
                         help="InstantID identity strength 0.0–1.0 (default 0.8). "
                              "Higher = stronger identity lock, less generative variation.")
+    parser.add_argument("--backend", choices=["openrouter", "instantid", "perchance"],
+                        default="openrouter",
+                        help="Generation backend (default: openrouter)")
+    parser.add_argument("--model", default="qwen/qwen3.6-plus-preview",
+                        help="Model ID for OpenRouter backend (default: qwen/qwen3.6-plus-preview)")
+    parser.add_argument("--resolution", type=str, default="512x768",
+                        help="Image resolution: 512x768 (portrait), 768x768 (square), 768x512 (landscape). "
+                             "Passed to perchance backend only (default: 512x768)")
     args = parser.parse_args()
+
+    if args.backend == "openrouter":
+        from scripts.openrouter_client import run_generation
+    elif args.backend == "instantid":
+        from scripts.instantid_client import run_generation
+    else:
+        from scripts.perchance_http_client import run_generation
 
     prior_tuning = None
     if args.tune:
@@ -403,6 +425,9 @@ def main():
         tuner=tuner,
         reference_image_path=reference_image_path,
         ip_adapter_scale=args.ip_scale,
+        model=args.model,
+        resolution=args.resolution,
+        generation_fn=run_generation,
     )
 
 

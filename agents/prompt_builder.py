@@ -202,9 +202,13 @@ def _sartorial_description(sartorial: dict) -> list[str]:
     return tokens
 
 
-def build_prompt(artifact: dict) -> dict:
+def build_prompt(artifact: dict, full_body: bool = False) -> dict:
     """
     Build a perchance-ready prompt pair from a GTA artifact.
+
+    Args:
+        artifact:  GTA artifact dict
+        full_body: If True, generate a standing full-body shot instead of portrait
 
     Returns:
         {
@@ -214,6 +218,7 @@ def build_prompt(artifact: dict) -> dict:
             "seed":            None,  # populated after first generation
             "builder_version": str,
             "source_artifact": str,
+            "full_body":       bool,
             "slot_diagnostics": dict  # raw values used for each slot
         }
     """
@@ -325,15 +330,41 @@ def build_prompt(artifact: dict) -> dict:
     # ------------------------------------------------------------------
     # Block 5: Optics / style constants
     # ------------------------------------------------------------------
-    optics_tokens = [
-        "portrait photography",
-        "facing camera directly",
-        "neutral background",
-        "sharp focus",
-        "high detail",
-        "natural lighting",
-        "photorealistic",
-    ]
+    if full_body:
+        # Height estimate for grounding (approximate)
+        height_cm = body.get("height_estimate_cm") if body else None
+        height_token = None
+        if height_cm and 140 < height_cm < 185:
+            if height_cm < 158:
+                height_token = "petite build, short stature"
+            elif height_cm < 170:
+                height_token = "average height"
+            else:
+                height_token = "tall slender figure"
+
+        optics_tokens = [
+            "full body photograph",
+            "standing pose",
+            "full figure head to toe",
+            "facing camera directly",
+            "neutral background",
+            "sharp focus",
+            "high detail",
+            "natural lighting",
+            "photorealistic",
+        ]
+        if height_token:
+            optics_tokens.insert(2, height_token)
+    else:
+        optics_tokens = [
+            "portrait photography",
+            "facing camera directly",
+            "neutral background",
+            "sharp focus",
+            "high detail",
+            "natural lighting",
+            "photorealistic",
+        ]
 
     # ------------------------------------------------------------------
     # Assemble positive prompt
@@ -344,7 +375,7 @@ def build_prompt(artifact: dict) -> dict:
     if biometric_tokens:
         sections.append(", ".join(biometric_tokens))
     if body_tokens:
-            sections.append(", ".join(body_tokens))
+        sections.append(", ".join(body_tokens))
     if sartorial_tokens:
         sections.append(", ".join(sartorial_tokens))
     sections.append(", ".join(optics_tokens))
@@ -354,25 +385,29 @@ def build_prompt(artifact: dict) -> dict:
     # ------------------------------------------------------------------
     # Negative prompt
     # ------------------------------------------------------------------
-    negative_prompt = (
+    base_negative = (
         "deformed, mutation, extra limbs, extra fingers, missing limbs, "
         "blurry, low quality, low resolution, jpeg artifacts, "
         "cartoon, anime, illustration, painting, drawing, sketch, "
         "text, watermark, signature, logo, "
         "disfigured, bad anatomy, bad proportions, "
         "unnatural skin, plastic skin, wax figure, "
-        "multiple people, crowd, "
-        "sunglasses" if eyewear in ("none", "unknown") else ""
+        "multiple people, crowd"
     )
+    if eyewear in ("none", "unknown"):
+        base_negative += ", sunglasses"
+    if full_body:
+        base_negative += ", portrait crop, headshot, close-up, bust, cropped legs, cropped feet"
 
     return {
         "positive_prompt":  positive_prompt,
-        "negative_prompt":  negative_prompt.strip(", "),
+        "negative_prompt":  base_negative,
         "style_selector":   "Professional Photo",
         "aspect_ratio":     "Portrait",
         "seed":             None,
         "builder_version":  BUILDER_VERSION,
         "source_artifact":  artifact.get("artifact_id", "unknown"),
+        "full_body":        full_body,
         "slot_diagnostics": diag,
     }
 

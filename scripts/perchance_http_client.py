@@ -261,8 +261,8 @@ def _download_image(sess, image_id: str) -> bytes:
     return resp.content
 
 
-def _channel_from_url(generator_url: str) -> str:
-    return generator_url.rstrip("/").split("/")[-1]
+def _channel_from_url(generator_url: str | None) -> str:
+    return (generator_url or DEFAULT_URL).rstrip("/").split("/")[-1]
 
 
 # ---------------------------------------------------------------------------
@@ -280,6 +280,7 @@ def run_generation(
     guidance_scale: float = 7.0,
     turnstile_token: str | None = None,
     user_key: str | None = None,
+    **kwargs,                        # absorb backend-specific params (e.g. reference_image_path, model)
 ) -> list[Path]:
     """
     Generate images via the perchance HTTP API. Drop-in for perchance_driver.run_generation().
